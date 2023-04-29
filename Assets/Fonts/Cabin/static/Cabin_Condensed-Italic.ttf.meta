@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 7392a15f3849e9d4daec9b025cfe52f2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cabin Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 123b6a2a055c5c548855d018b0da99fe, type: 3}
+  - {fileID: 12800000, guid: 928cb210b847ba241bc782988f8a63b1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

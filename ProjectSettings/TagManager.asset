@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Minimap
+  - Clouds
+  - MinimapCamera
+  - Canvas
+  - Target
+  - IconCamera
+  - Rain
+  - Water
+  - GameManager
+  - World
+  - WeatherManager
+  - WindIndicator
+  - CinemachineTarget
+  - Voxels
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Terrain
+  - Sky
+  - MinimapOnly
+  - Objects
+  - Foliage
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

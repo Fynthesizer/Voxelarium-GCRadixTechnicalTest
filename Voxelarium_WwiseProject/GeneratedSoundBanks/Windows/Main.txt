@@ -1,0 +1,39 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3854155799	Play_Footsteps			\Default Work Unit\Play_Footsteps	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	3072116243	GroundMaterial			\Default Work Unit\GroundMaterial	
+
+Switch	ID	Name	Switch Group			Notes
+	787898836	Snow	GroundMaterial			
+	803837735	Sand	GroundMaterial			
+	1216965916	Stone	GroundMaterial			
+	2195636714	Dirt	GroundMaterial			
+	4248645337	Grass	GroundMaterial			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	60635659	Footsteps_Stone_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Stone\Footsteps_Stone_06		69856
+	155865947	Footsteps_Dirt_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Dirt_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Dirt\Footsteps_Dirt_03		48936
+	205680951	Footsteps_Stone_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Stone\Footsteps_Stone_01		58972
+	231239467	Footsteps_Sand_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Sand\Footsteps_Sand_04		72096
+	239728135	Footsteps_Grass_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Grass\Footsteps_Grass_05		58488
+	289775055	Footsteps_Stone_02	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Stone\Footsteps_Stone_02		58596
+	370480608	Footsteps_Grass_02	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Grass\Footsteps_Grass_02		63096
+	424872928	Footsteps_Sand_02	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Sand\Footsteps_Sand_02		54096
+	454364148	Footsteps_Dirt_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Dirt_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Dirt\Footsteps_Dirt_06		56060
+	461156570	Footsteps_Dirt_02	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Dirt_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Dirt\Footsteps_Dirt_02		50576
+	516849955	Footsteps_Dirt_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Dirt_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Dirt\Footsteps_Dirt_04		47676
+	603697385	Footsteps_Stone_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Stone\Footsteps_Stone_03		46700
+	613335784	Footsteps_Stone_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Stone\Footsteps_Stone_05		68688
+	652273397	Footsteps_Stone_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Stone\Footsteps_Stone_04		46696
+	723587022	Footsteps_Sand_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Sand\Footsteps_Sand_01		65108
+	747044066	Footsteps_Sand_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Sand\Footsteps_Sand_03		72096
+	781290067	Footsteps_Dirt_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Dirt_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Dirt\Footsteps_Dirt_05		61644
+	800834350	Footsteps_Sand_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Sand\Footsteps_Sand_05		72096
+	847887956	Footsteps_Grass_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Grass\Footsteps_Grass_04		53460
+	935958708	Footsteps_Dirt_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Dirt_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Dirt\Footsteps_Dirt_01		49992
+	966319581	Footsteps_Grass_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Grass\Footsteps_Grass_01		57872
+	1051055135	Footsteps_Grass_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Grass\Footsteps_Grass_03		52684
+	1058756355	Footsteps_Grass_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Grass\Footsteps_Grass_06		57704
+	1063826855	Footsteps_Sand_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps_Sand\Footsteps_Sand_06		72096
+
