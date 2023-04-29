@@ -157,7 +157,7 @@ public class FirstPersonController : MonoBehaviour
 
         GroundedCheck();
 
-        if (Vector3.Distance(_prevPosition, transform.position) > 0.1f)
+        if (Vector3.Distance(_prevPosition, transform.position) > 0.01f)
         {
             // update the current ground material
             groundMaterial = world.GetVoxel(transform.position + new Vector3(0, -1, 0)).material;

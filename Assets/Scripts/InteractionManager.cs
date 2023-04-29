@@ -8,9 +8,10 @@ public class InteractionManager : MonoBehaviour
 {
     GameObject target;
     Camera cam;
-    Inventory inventory;
     World world;
     UIManager ui;
+
+    [SerializeField] PlayerAudioController _audioController;
 
     bool targetVisible;
     Vector3 targetPosition;
@@ -19,19 +20,13 @@ public class InteractionManager : MonoBehaviour
 
     public float minDistance = 2;
     public float maxDistance = 100;
-    public float placeSpeed = 0.05f;
-    public float placeRadius = 2;
+    public float sculptSpeed = 0.05f;
+    public float sculptRadius = 2;
 
-    public bool isTerraforming = false;
+    public bool isSculpting = false;
 
     public Material targetMaterial;
     public Mesh defaultTargetMesh;
-
-    /*
-    [Header("Sound Effects")]
-    private EventInstance digSound;
-    public FMODUnity.EventReference digEvent;
-    */
 
     Dictionary<Voxel.Material, int> materialIndexDictionary = new Dictionary<Voxel.Material, int>()
         {
@@ -46,7 +41,6 @@ public class InteractionManager : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Target");
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        inventory = GetComponent<FirstPersonController>().inventory;
         world = GameManager.gm.world;
         ui = GameManager.gm.ui;
 
@@ -56,7 +50,6 @@ public class InteractionManager : MonoBehaviour
         */
 
         StartCoroutine(Interaction());
-        UpdateTargetShape(inventory.ActiveItem());
     }
 
     void Update()
@@ -70,20 +63,6 @@ public class InteractionManager : MonoBehaviour
 
         MeshRenderer targetRenderer = target.GetComponent<MeshRenderer>();
         targetRenderer.enabled = targetVisible;
-    }
-
-    public void OnInventorySelection(InputValue value)
-    {
-        inventory.IncrementActiveSlot((int)value.Get<float>());
-        ui.UpdateInventory();
-        UpdateTargetShape(inventory.ActiveItem());
-    }
-
-    public void OnNumberKeys(InputValue value)
-    {
-        inventory.SetActiveSlot((int)value.Get<float>());
-        ui.UpdateInventory();
-        UpdateTargetShape(inventory.ActiveItem());
     }
 
     void UpdateTargetShape(Item item)
@@ -126,49 +105,49 @@ public class InteractionManager : MonoBehaviour
             {
                 targetVisible = true;
                 targetPosition = hit.point;
-                targetSize = placeRadius * 2f;
+                targetSize = sculptRadius * 2f;
             }
             else targetVisible = false;
 
-            placeRadius += (Mouse.current.scroll.ReadValue().y / 960);
-            placeRadius = Mathf.Clamp(placeRadius, 1, 10);
+            sculptRadius += (Mouse.current.scroll.ReadValue().y / 960);
+            sculptRadius = Mathf.Clamp(sculptRadius, 1, 10);
 
             //Place
             if (Mouse.current.leftButton.isPressed == true &&
                 Physics.Raycast(ray, out hit, maxDistance, layerMask) &&
                 hit.distance > minDistance && hit.distance < maxDistance)
             {
-                if (!isTerraforming)
+                if (!isSculpting)
                 {
-                    //digSound.start();
-                    isTerraforming = true;
+                    _audioController.ToggleSculptSound(true);
+                    _audioController.SetSculptMaterial(Voxel.Material.Dirt);
+                    isSculpting = true;
                 }
 
                 //digSound.setParameterByName("Material", materialIndexDictionary[s.material]);
-                world.PlaceTerrain(hit.point, placeSpeed, placeRadius, Voxel.Material.Dirt);
+                world.PlaceTerrain(hit.point, sculptSpeed, sculptRadius, Voxel.Material.Dirt);
             }
             //Dig
             else if (Mouse.current.rightButton.isPressed == true &&
                 Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) &&
                 hit.distance < maxDistance)
             {
-                if (!isTerraforming)
+                if (!isSculpting)
                 {
-                    //digSound.start();
-                    isTerraforming = true;
+                    _audioController.ToggleSculptSound(true);
+                    isSculpting = true;
                 }
 
-                Voxel.Material targetSubstance = world.GetVoxel(hit.point).material;
-                materialIndexDictionary.TryGetValue(targetSubstance, out int soundIndex);
-                //digSound.setParameterByName("Material", soundIndex);
-                world.ModifyTerrain(hit.point, -placeSpeed,placeRadius);
+                Voxel.Material targetMaterial = world.GetVoxel(hit.point).material;
+                _audioController.SetSculptMaterial(targetMaterial);
+                world.ModifyTerrain(hit.point, -sculptSpeed,sculptRadius);
             }
 
             //No action
-            else if (isTerraforming)
+            else if (isSculpting)
             {
-                //digSound.stop(STOP_MODE.ALLOWFADEOUT);
-                isTerraforming = false;
+                _audioController.ToggleSculptSound(false);
+                isSculpting = false;
             }
 
             yield return new WaitForSeconds(0.01f);

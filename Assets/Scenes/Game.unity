@@ -261,6 +261,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6991508}
   m_CullTransparentMesh: 1
+--- !u!1 &33372435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33372436}
+  - component: {fileID: 33372437}
+  m_Layer: 17
+  m_Name: AmbienceAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33372436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33372435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1866038437}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33372437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33372435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc27e8430985a34479177270c7a20d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weatherManager: {fileID: 1866038439}
+  _outdoorAmbienceEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 04de443ebc8746d4095144a898b3502d,
+      type: 2}
+  _rainEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 84ab4d8815b37be4884f5188a5fc6c2f,
+      type: 2}
+  _timeOfDayRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 25bac766d36e033458043fa45ac2c699,
+      type: 2}
+  _rainRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c7f28fc6791667c4cad265187080dda8,
+      type: 2}
 --- !u!1 &34747855
 GameObject:
   m_ObjectHideFlags: 0
@@ -11862,6 +11927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd9491a128fb4a40916ae72b55b63d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bubblespaceAnalyser: {fileID: 2050593597}
   _footstepEvent:
     idInternal: 0
     valueGuidInternal: 
@@ -12316,50 +12382,6 @@ MonoBehaviour:
   playerStatsUI: {fileID: 1240997259}
   loadScreen: {fileID: 252043909}
   playerIcon: {fileID: 973310101}
---- !u!1 &896950851
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 896950853}
-  - component: {fileID: 896950854}
-  m_Layer: 0
-  m_Name: Ambience
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &896950853
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896950851}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1866038437}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &896950854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896950851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &973310099
 GameObject:
   m_ObjectHideFlags: 0
@@ -23808,10 +23830,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 590904126}
-  - {fileID: 896950853}
   - {fileID: 618138783}
   - {fileID: 459911696}
   - {fileID: 1537363559}
+  - {fileID: 33372436}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23829,7 +23851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 9
   timeOfDay: 0
-  timeSpeed: 60
+  timeSpeed: 120
   sunElevation: 60
   sunIntensity: 1
   moonIntensity: 0.4
@@ -24431,13 +24453,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rayCount: 3
   _bufferSize: 4
-  _smoothing: 16
+  _horizontalSmoothingFrames: 16
+  _verticalSmoothingFrames: 4
   _rotationPhases: 12
   _maxRaycastDistance: 10
+  _verticalRayPlayerDistance: 1
   _layerMask:
     serializedVersion: 2
     m_Bits: 576
-  _drawDebugRays: 1
+  _drawDebug: 1
 --- !u!1 &2077025841
 GameObject:
   m_ObjectHideFlags: 0

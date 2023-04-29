@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b79471600082aa4abef28404bc22850, type: 3}
+  m_Name: 4D1797B4-E373-4675-88C8-326F37ADF37D
+  m_EditorClassIdentifier: 
+  objectName: BubbleHeight
+  id: 744577782
+  guid: 4D1797B4-E373-4675-88C8-326F37ADF37D

@@ -1,5 +1,23 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	2082818283	SculptMaterial			\Default Work Unit\SculptMaterial	
+
+State	ID	Name	State Group			Notes
+	1216965916	Stone	SculptMaterial			
+	2195636714	Dirt	SculptMaterial			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	596440120	BubbleAverage			\Default Work Unit\BubbleAverage	
+	744577782	BubbleHeight			\Default Work Unit\BubbleHeight	
+	2967072453	BubbleWidth			\Default Work Unit\BubbleWidth	
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	348963605	Reverb			\Default Work Unit\Master Audio Bus\Reverb	
+
+Effect plug-ins	ID	Name	Type				Notes
+	159617704	RoomVerb (Custom)	Wwise RoomVerb			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

@@ -9,6 +9,7 @@ using System.Collections.Concurrent;
 
 public class BubblespaceAnalyser : MonoBehaviour
 {
+    [Header("Raycasting")]
     [SerializeField] private int _rayCount = 3;
     [SerializeField] private int _bufferSize = 4;
     [SerializeField] private int _horizontalSmoothingFrames = 16;
@@ -20,12 +21,18 @@ public class BubblespaceAnalyser : MonoBehaviour
 
     [SerializeField] private bool _drawDebug;
 
+    [Header("Wwise Parameters")]
+    [SerializeField] private AK.Wwise.RTPC _bubbleWidthRTPC;
+    [SerializeField] private AK.Wwise.RTPC _bubbleHeightRTPC;
+    [SerializeField] private AK.Wwise.RTPC _bubbleAverageRTPC;
+
     private float _bubbleWidth;
     private float _smoothedBubbleWidth;
     private float _bubbleHeight;
     private float _smoothedBubbleHeight;
     private int _rotationPhase;
     private float _rotationAngle;
+    private float _bubbleAverage;
 
     private DistanceBuffer _bubbleWidthBuffer;
     private DistanceBuffer _bubbleHeightBuffer;
@@ -41,10 +48,22 @@ public class BubblespaceAnalyser : MonoBehaviour
     {
         // Smooth bubble size
         if (Mathf.Abs(_bubbleWidth - _smoothedBubbleWidth) > 1.0f)
+        {
             _smoothedBubbleWidth = Mathf.Lerp(_smoothedBubbleWidth, _bubbleWidth, 1f / _horizontalSmoothingFrames);
+            _bubbleWidthRTPC.SetGlobalValue(_smoothedBubbleWidth);
+
+            _bubbleAverage = (_smoothedBubbleWidth + _smoothedBubbleHeight) / 2;
+            _bubbleAverageRTPC.SetGlobalValue(_bubbleAverage);
+        }
 
         if (Mathf.Abs(_bubbleHeight - _smoothedBubbleHeight) > 1.0f)
+        {
             _smoothedBubbleHeight = Mathf.Lerp(_smoothedBubbleHeight, _bubbleHeight, 1f / _verticalSmoothingFrames);
+            _bubbleHeightRTPC.SetGlobalValue(_smoothedBubbleHeight);
+
+            _bubbleAverage = (_smoothedBubbleWidth + _smoothedBubbleHeight) / 2;
+            _bubbleAverageRTPC.SetGlobalValue(_bubbleAverage);
+        }
     }
 
     //Called when the player has moved

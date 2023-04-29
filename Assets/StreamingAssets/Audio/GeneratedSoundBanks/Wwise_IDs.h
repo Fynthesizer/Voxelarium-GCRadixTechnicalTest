@@ -13,8 +13,28 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_AMBIENCE_OUTDOORS = 790324878U;
+        static const AkUniqueID PLAY_AMBIENCE_RAIN = 2378670719U;
+        static const AkUniqueID PLAY_AMBIENCE_WIND = 1913801107U;
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
+        static const AkUniqueID PLAY_SCULPTING = 1233863437U;
+        static const AkUniqueID STOP_SCULPTING = 780683743U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace SCULPTMATERIAL
+        {
+            static const AkUniqueID GROUP = 2082818283U;
+
+            namespace STATE
+            {
+                static const AkUniqueID DIRT = 2195636714U;
+                static const AkUniqueID STONE = 1216965916U;
+            } // namespace STATE
+        } // namespace SCULPTMATERIAL
+
+    } // namespace STATES
 
     namespace SWITCHES
     {
@@ -34,6 +54,16 @@ namespace AK
 
     } // namespace SWITCHES
 
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID BUBBLEAVERAGE = 596440120U;
+        static const AkUniqueID BUBBLEHEIGHT = 744577782U;
+        static const AkUniqueID BUBBLEWIDTH = 2967072453U;
+        static const AkUniqueID RAIN = 2043403999U;
+        static const AkUniqueID TIMEOFDAY = 3729505769U;
+        static const AkUniqueID WINDSTRENGTH = 3158975812U;
+    } // namespace GAME_PARAMETERS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
@@ -44,6 +74,11 @@ namespace AK
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID REVERB = 348963605U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {
