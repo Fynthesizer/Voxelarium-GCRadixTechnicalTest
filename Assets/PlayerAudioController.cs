@@ -5,6 +5,8 @@ using AK.Wwise;
 
 public class PlayerAudioController : MonoBehaviour
 {
+    [SerializeField] private BubblespaceAnalyser _bubblespaceAnalyser;
+
     [SerializeField] private AK.Wwise.Event _footstepEvent;
     [SerializeField] private float _footstepRate;
     private float _lastStepDist = 0f;
@@ -24,17 +26,19 @@ public class PlayerAudioController : MonoBehaviour
         }
     }
 
-    public void Movement()
+    public void Movement(bool grounded)
     {
         float distance = Vector3.Distance(transform.position, _prevPos);
         _lastStepDist += distance;
         _prevPos = transform.position;
 
-        if (_lastStepDist > _footstepRate)
+        if (_lastStepDist > _footstepRate && grounded)
         {
             PlayFootstep();
             _lastStepDist = 0f;
         }
+
+        _bubblespaceAnalyser.UpdateBubble();
     }
 
 

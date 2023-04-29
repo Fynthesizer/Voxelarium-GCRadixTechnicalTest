@@ -68,6 +68,8 @@ public class FirstPersonController : MonoBehaviour
     public float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
 
+    private Vector3 _prevPosition;
+
     // timeout deltatime
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
@@ -88,8 +90,6 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Sound Effects")]
     public float footstepRate = 1f;
-    Vector3 prevPos;
-    float lastStepDist = 0;
     [SerializeField] private PlayerAudioController _audioController;
 
     [Header("Player Data")]
@@ -106,12 +106,6 @@ public class FirstPersonController : MonoBehaviour
             { Voxel.Material.Snow, 1 },
         };
 
-    public enum InteractionMode {
-        Landscaping,
-        Construction,
-        Placement,
-        Nothing
-    }
 
     private void Awake()
     {
@@ -157,11 +151,21 @@ public class FirstPersonController : MonoBehaviour
         if (!flyMode)
         {
             JumpAndGravity();
-            GroundedCheck();
             Move();
-            Footsteps();
         }
         else Fly();
+
+        GroundedCheck();
+
+        if (Vector3.Distance(_prevPosition, transform.position) > 0.1f)
+        {
+            // update the current ground material
+            groundMaterial = world.GetVoxel(transform.position + new Vector3(0, -1, 0)).material;
+            _audioController.SetGroundMaterial(groundMaterial);
+            _audioController.Movement(grounded);
+        }
+
+        _prevPosition = transform.position;
     }
 
     public void OnTeleport()
@@ -265,16 +269,6 @@ public class FirstPersonController : MonoBehaviour
 
         // move the player
         _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
-        // update the current ground material
-        groundMaterial = world.GetVoxel(transform.position + new Vector3(0, -1, 0)).material;
-
-        // update the audio controller
-        if (grounded)
-        {
-            _audioController.SetGroundMaterial(groundMaterial);
-            _audioController.Movement();
-        }
     }
 
     private void Fly()
@@ -414,41 +408,6 @@ public class FirstPersonController : MonoBehaviour
 
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
-    }
-
-    void Footsteps()
-    {
-        float distance = Vector3.Distance(transform.position, prevPos);
-        lastStepDist += distance;
-        prevPos = transform.position;
-
-        if (grounded || swimming)
-        {
-            if (lastStepDist > footstepRate)
-            {
-                PlayFootstepSound();
-                lastStepDist = 0f;
-            }
-        }
-    }
-
-    void PlayFootstepSound()
-    {
-        /*
-        EventInstance footstep = FMODUnity.RuntimeManager.CreateInstance(footstepEvent);
-
-        //Get the material that the player is currently walking on
-        Voxel groundVoxel = world.GetVoxel(transform.position + new Vector3(0, -1, 0));
-        materialIndexDictionary.TryGetValue(groundVoxel.material, out int soundIndex);
-        footstep.setParameterByName("Material", soundIndex);
-        if (submerged)
-        {
-            float waterLevel = Helpers.Map(transform.position.y, 10f, 9f, 0.25f, 1f);
-            footstep.setParameterByName("Submerged", waterLevel);
-        }
-        footstep.start();
-        footstep.release();
-        */
     }
 
     private void OnTriggerEnter(Collider other)
