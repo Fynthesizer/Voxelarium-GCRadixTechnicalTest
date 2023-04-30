@@ -15,4 +15,5 @@ MonoBehaviour:
   objectName: Dirt
   id: 2195636714
   guid: AD028E0E-59AB-4E15-B1BF-AF0D398EAD95
-  WwiseStateGroupReference: {fileID: 0}
+  WwiseStateGroupReference: {fileID: 11400000, guid: 7a72874b326d84341b1e3f15d9c85d86,
+    type: 2}

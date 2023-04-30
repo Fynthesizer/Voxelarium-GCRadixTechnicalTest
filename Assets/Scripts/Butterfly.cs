@@ -17,25 +17,17 @@ public class Butterfly : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        basePos = transform.position;
+        basePos = transform.localPosition;
 
         StartCoroutine("CheckTime");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
-        //velocity = new Vector3(Mathf.PerlinNoise(Time.time, 0) - 0.5f, Mathf.PerlinNoise(Time.time, 1) - 0.5f, Mathf.PerlinNoise(Time.time, 2) - 0.5f).normalized * speed;
-        //transform.position += velocity;
-        Vector3 prevPos = transform.position;
+        Vector3 prevPos = transform.localPosition;
         Vector3 offsetPos = new Vector3(Mathf.PerlinNoise(Time.time * speed, basePos.x * 10) - 0.5f, Mathf.PerlinNoise(Time.time * speed, basePos.y * 10) - 0.5f, Mathf.PerlinNoise(Time.time * speed, basePos.z * 10) - 0.5f);
-        transform.position = basePos + (offsetPos * wanderRange);
-        direction = (prevPos - transform.position).normalized;
+        transform.localPosition = basePos + (offsetPos * wanderRange);
+        direction = (prevPos - transform.localPosition).normalized;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction, Vector3.up), Time.deltaTime * 10f);
     }
 

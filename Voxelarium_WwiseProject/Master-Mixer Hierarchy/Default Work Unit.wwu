@@ -9,6 +9,245 @@
 							<ObjectRef Name="System" ID="{87D1B74B-7F87-401C-8DBE-69E4DCA25562}" WorkUnitID="{84E49D23-AAA3-43B7-B8FA-3C0E97890DEA}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<AuxBus Name="Reverb" ID="{2245B240-0ED9-481A-ADF0-8EED2325E8DE}">
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom>
+										<Effect Name="RoomVerb (Custom)" ID="{C5A80540-4CF8-483F-8256-465F32C871C1}" ShortID="159617704" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<PropertyList>
+												<Property Name="ERLevel" Type="Real32" Value="-10"/>
+												<Property Name="ERPattern" Type="int32" Value="14"/>
+											</PropertyList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{140B638B-DD3F-4195-BD96-5E7EEF910F01}" ShortID="468286073">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="ReverbLevel"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="BubbleHeight" ID="{4D1797B4-E373-4675-88C8-326F37ADF37D}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{A5A455F7-37AD-47D2-9636-E98CDA9E4441}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0.04149</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>Exp1</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>6.18583</XPos>
+																						<YPos>-2.61212</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>Exp1</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>10</XPos>
+																						<YPos>-96.3</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>50</XPos>
+																						<YPos>-96.3</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{8309997E-29AC-48B7-8879-BAEEC72A9A00}" ShortID="517509082">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="ERLevel"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="BubbleWidth" ID="{CCAE6589-52AA-403F-B114-FACCB0173A68}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{F2F1DFA1-4841-4BBD-99CD-BF9DB9D06DFE}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-0.13979</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>Exp1</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>2.9877</XPos>
+																						<YPos>-1.19905</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>Exp1</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>10</XPos>
+																						<YPos>-96.3</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>50</XPos>
+																						<YPos>-96.3</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{13C946F1-557C-41E3-B32B-FD3604A6B60E}" ShortID="267989378">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Diffusion"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="BubbleWidth" ID="{CCAE6589-52AA-403F-B114-FACCB0173A68}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{F8128133-52F4-477F-962F-255A5290C5DD}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="1"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>10</XPos>
+																						<YPos>-100</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>50</XPos>
+																						<YPos>-100</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{E434EADD-1EF1-4B5E-BFE4-1A135E8E6280}" ShortID="710835644">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="DecayTime"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="BubbleAverage" ID="{DA5210B3-664F-48BC-B0A0-D88E712CA268}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{6C465FF4-404A-4529-A9F3-00F8CD74496D}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="1"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>1.20000004768372</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>10</XPos>
+																						<YPos>3.4729</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>50</XPos>
+																						<YPos>3.4729</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{6675E74E-9AF7-46A7-8592-D82620B8D38D}" ShortID="944254177">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="ReverbLevel"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="BubbleWidth" ID="{CCAE6589-52AA-403F-B114-FACCB0173A68}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{330B5B67-ED25-47E0-A06F-0615283DB93A}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-7E-05</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>6.88437</XPos>
+																						<YPos>-2.87671</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>10</XPos>
+																						<YPos>-96.3</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>50</XPos>
+																						<YPos>-96.3</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</Effect>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</AuxBus>
+					</ChildrenList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

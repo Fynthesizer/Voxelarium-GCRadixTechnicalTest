@@ -455,23 +455,23 @@ public class Chunk : MonoBehaviour
         //Grass and Flowers
         if (level > 10f)
         {
-            if (Random.value > flowerChance) newObject = Instantiate(grass, position, Quaternion.identity, objects.transform) as GameObject;
+            if (Random.value > flowerChance) newObject = Instantiate(grass, position, Quaternion.identity, objects.transform);
             else
             {
                 int flowerType = Random.Range(0, flowers.Length);
-                newObject = Instantiate(flowers[flowerType], position, Quaternion.identity, objects.transform) as GameObject;
+                newObject = Instantiate(flowers[flowerType], position, Quaternion.identity, objects.transform);
             }
         }
         //Reeds
         else if (level < 10f && level > 9f && Random.value > 0.85f)
         {
-            newObject = Instantiate(reeds, position, Quaternion.identity, objects.transform) as GameObject;
+            newObject = Instantiate(reeds, position, Quaternion.identity, objects.transform);
         }
         //Lily pad
         else if (level < 9f && level > 8f && Random.value > 0.85f)
         {
             Vector3 pos = new Vector3(position.x, 10f, position.z);
-            newObject = Instantiate(lilypad, pos, Quaternion.identity, objects.transform) as GameObject;
+            newObject = Instantiate(lilypad, pos, Quaternion.identity, objects.transform);
         }
         else return;
 
@@ -481,10 +481,10 @@ public class Chunk : MonoBehaviour
 
     void PlaceButterfly(int x, int z, float level, float yOffset)
     {
-
         Vector3 position = new Vector3(x, level + yOffset, z) + transform.position;
         GameObject newObject;
-        newObject = Instantiate(butterfly, position, Quaternion.identity, objects.transform) as GameObject;
+        print(position);
+        newObject = Instantiate(butterfly, position, Quaternion.identity, objects.transform);
 
     }
 

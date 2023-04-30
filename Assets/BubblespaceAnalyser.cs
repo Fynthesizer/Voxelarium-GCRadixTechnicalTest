@@ -6,33 +6,53 @@ using AK.Wwise;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Search;
 using System.Collections.Concurrent;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class BubblespaceAnalyser : MonoBehaviour
 {
     [Header("Raycasting")]
+    [Tooltip("How many rays should be fired each frame")]
     [SerializeField] private int _rayCount = 3;
+    [Tooltip("How many distance samples should be held in the buffers")]
     [SerializeField] private int _bufferSize = 4;
+    [Tooltip("How many frames should the bubble width be smoothed over")]
     [SerializeField] private int _horizontalSmoothingFrames = 16;
+    [Tooltip("How many frames should the bubble height be smoothed over")]
     [SerializeField] private int _verticalSmoothingFrames = 4;
+    [Tooltip("How many different phases should the ray directions cycle through")]
     [SerializeField] private int _rotationPhases = 12;
-    [SerializeField] private float _maxRaycastDistance = 10.0f;
-    [SerializeField] private float _verticalRayPlayerDistance = 1.0f;
+    [Tooltip("The maximum distance that the rays will query")]
+    [SerializeField] private float _maxRaycastDistance = 30.0f;
+    [Tooltip("The horizontal offset from the player's position for the vertical rays")]
+    [SerializeField] private float _verticalRayHorizontalOffset = 1.0f;
+    [Tooltip("Which collision layers should be detected by the raycasts")]
     [SerializeField] private LayerMask _layerMask;
 
+    [Header("Debug")]
     [SerializeField] private bool _drawDebug;
+    [SerializeField] private Mesh _debugHitMesh;
+    [SerializeField] private float _debugHitSize;
+    [SerializeField] private Material _debugHitMaterial;
+    [SerializeField] private List<Material> _debugRayMaterials;
+    [SerializeField] private GameObject _debugBubble;
+    private LineRenderer[] _debugRays;
+    private Vector3[] _hitPoints;
 
     [Header("Wwise Parameters")]
     [SerializeField] private AK.Wwise.RTPC _bubbleWidthRTPC;
     [SerializeField] private AK.Wwise.RTPC _bubbleHeightRTPC;
     [SerializeField] private AK.Wwise.RTPC _bubbleAverageRTPC;
 
+    [HideInInspector] public float SmoothedBubbleWidth;
+    [HideInInspector] public float SmoothedBubbleHeight;
+
     private float _bubbleWidth;
-    private float _smoothedBubbleWidth;
     private float _bubbleHeight;
-    private float _smoothedBubbleHeight;
     private int _rotationPhase;
     private float _rotationAngle;
     private float _bubbleAverage;
+    private Vector3 _previousPosition;
 
     private DistanceBuffer _bubbleWidthBuffer;
     private DistanceBuffer _bubbleHeightBuffer;
@@ -42,44 +62,74 @@ public class BubblespaceAnalyser : MonoBehaviour
         _bubbleWidthBuffer = new DistanceBuffer(_bufferSize);
         _bubbleHeightBuffer = new DistanceBuffer(_bufferSize);
         _rotationAngle = 360f / _rayCount;
+        _hitPoints = new Vector3[_rotationPhases * 2];
+        //_debugRays = new LineRenderer[_rayCount * 2];
+
+        /*
+        for (int i = 0; i < _rayCount * 2; i++)
+        {
+            _debugRays[i] = new GameObject("DebugLine").AddComponent<LineRenderer>();
+            _debugRays[i].SetMaterials(_debugRayMaterials);
+            _debugRays[i].startWidth = 0.001f;
+            _debugRays[i].endWidth = 0.001f;
+        }
+        */
     }
 
     private void Update()
     {
-        // Smooth bubble size
-        if (Mathf.Abs(_bubbleWidth - _smoothedBubbleWidth) > 1.0f)
-        {
-            _smoothedBubbleWidth = Mathf.Lerp(_smoothedBubbleWidth, _bubbleWidth, 1f / _horizontalSmoothingFrames);
-            _bubbleWidthRTPC.SetGlobalValue(_smoothedBubbleWidth);
+        // If the player has moved since the last frame, recalculate the size of the bubble
+        if (_previousPosition != transform.position) UpdateBubble();
+        _previousPosition = transform.position;
 
-            _bubbleAverage = (_smoothedBubbleWidth + _smoothedBubbleHeight) / 2;
+        SmoothData();
+        if (_drawDebug) DrawDebug();
+    }
+
+    private void DrawDebug()
+    {
+        for (int i = 0; i < _hitPoints.Length; i++)
+        {
+            print(_hitPoints[i]);
+            Matrix4x4 transformationMatrix = Matrix4x4.Translate(_hitPoints[i]);
+            transformationMatrix *= Matrix4x4.Scale(new Vector3(_debugHitSize, _debugHitSize, _debugHitSize));
+            Graphics.DrawMesh(_debugHitMesh, transformationMatrix, _debugHitMaterial, 0);
+        }
+    }
+
+    private void SmoothData()
+    {
+        if (Mathf.Abs(_bubbleWidth - SmoothedBubbleWidth) > 1.0f)
+        {
+            SmoothedBubbleWidth = Mathf.Lerp(SmoothedBubbleWidth, _bubbleWidth, 1f / _horizontalSmoothingFrames);
+            _bubbleWidthRTPC.SetGlobalValue(SmoothedBubbleWidth);
+
+            _bubbleAverage = (SmoothedBubbleWidth + SmoothedBubbleHeight) / 2;
             _bubbleAverageRTPC.SetGlobalValue(_bubbleAverage);
         }
 
-        if (Mathf.Abs(_bubbleHeight - _smoothedBubbleHeight) > 1.0f)
+        if (Mathf.Abs(_bubbleHeight - SmoothedBubbleHeight) > 1.0f)
         {
-            _smoothedBubbleHeight = Mathf.Lerp(_smoothedBubbleHeight, _bubbleHeight, 1f / _verticalSmoothingFrames);
-            _bubbleHeightRTPC.SetGlobalValue(_smoothedBubbleHeight);
+            SmoothedBubbleHeight = Mathf.Lerp(SmoothedBubbleHeight, _bubbleHeight, 1f / _verticalSmoothingFrames);
+            _bubbleHeightRTPC.SetGlobalValue(SmoothedBubbleHeight);
 
-            _bubbleAverage = (_smoothedBubbleWidth + _smoothedBubbleHeight) / 2;
+            _bubbleAverage = (SmoothedBubbleWidth + SmoothedBubbleHeight) / 2;
             _bubbleAverageRTPC.SetGlobalValue(_bubbleAverage);
         }
     }
 
-    //Called when the player has moved
     public void UpdateBubble()
     {
         Vector2 bubble = GetBubble();
 
         _bubbleWidthBuffer.Enqueue(bubble.x);
         _bubbleWidth = _bubbleWidthBuffer.GetAverageOfSmallest(3);
-       
 
         _bubbleHeightBuffer.Enqueue(bubble.y);
         _bubbleHeight = _bubbleHeightBuffer.GetAverageOfSmallest(3);
 
         _rotationPhase++;
-        if (_rotationPhase > _rotationPhases) _rotationPhase = 0;
+        if (_rotationPhase >= _rotationPhases) _rotationPhase = 0;
     }
 
     private void OnDrawGizmos()
@@ -87,12 +137,12 @@ public class BubblespaceAnalyser : MonoBehaviour
         if (!_drawDebug) return;
 
         Gizmos.color = new Color(1.0f, 0.0f, 0.0f, 0.5f);
-        Gizmos.DrawSphere(transform.position, _smoothedBubbleWidth);
+        Gizmos.DrawSphere(transform.position, SmoothedBubbleWidth);
         Gizmos.color = new Color(0.0f, 0.0f, 1.0f, 0.5f);
-        Gizmos.DrawSphere(transform.position, _smoothedBubbleHeight);
+        Gizmos.DrawSphere(transform.position, SmoothedBubbleHeight);
     }
 
-    Vector2 GetBubble()
+    private Vector2 GetBubble()
     {
         float rayAngle = _rotationPhase * (360 / _rotationPhases);
         float averageHorizontalDistance = 0f;
@@ -110,41 +160,38 @@ public class BubblespaceAnalyser : MonoBehaviour
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo, _maxRaycastDistance, _layerMask))
             {
-                //averageHorizontalDistance += hitInfo.distance;
                 horizontalDistances[i] = hitInfo.distance;
             }
             else
             {
-                //averageHorizontalDistance += _maxRaycastDistance;
                 horizontalDistances[i] = _maxRaycastDistance;
             }
 
-            // Find vertical distance
-            Vector3 verticalRayOrigin = transform.position + (horizontalRayDirection * _verticalRayPlayerDistance);
-            ray = new Ray(verticalRayOrigin, Vector3.up);
-            if (Physics.Raycast(ray, out hitInfo, _maxRaycastDistance, _layerMask))
-            {
-                //averageVerticalDistance += hitInfo.distance;
-                verticalDistances[i] = hitInfo.distance;
-            }
-            else
-            {
-                //averageVerticalDistance += _maxRaycastDistance;
-                verticalDistances[i] = _maxRaycastDistance;
-            }
+            if (i == 0) _hitPoints[(_rotationPhase) + i] = hitInfo.point;
 
-            if (_drawDebug)
-            {
-                Debug.DrawRay(transform.position, horizontalRayDirection * horizontalDistances[i], Color.red);
-                Debug.DrawRay(verticalRayOrigin, Vector3.up * verticalDistances[i], Color.blue);
+            // Find vertical distance
+
+            // If a wall is closer than the ray's origin, consider the distance to be zero
+            if (horizontalDistances[i] < _verticalRayHorizontalOffset) verticalDistances[i] = 0; 
+            else { 
+                Vector3 verticalRayOrigin = transform.position + (horizontalRayDirection * _verticalRayHorizontalOffset);
+                ray = new Ray(verticalRayOrigin, Vector3.up);
+                if (Physics.Raycast(ray, out hitInfo, _maxRaycastDistance, _layerMask))
+                {
+                    verticalDistances[i] = hitInfo.distance;
+                }
+                else
+                {
+                    verticalDistances[i] = _maxRaycastDistance;
+                }
+
+                if (i == 0) _hitPoints[_rotationPhases + _rotationPhase + i] = hitInfo.point;
             }
 
             rayAngle += _rotationAngle;
         }
 
-        //averageHorizontalDistance /= _rayCount;
-        //averageVerticalDistance /= _rayCount;
-
+        // Get the average of the two smallest values
         averageHorizontalDistance = horizontalDistances.Average();
         
         // For the vertical distances, remove any values which are significantly different than the average

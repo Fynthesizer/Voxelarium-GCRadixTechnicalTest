@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{5BB7A068-9D17-4F48-B6EE-CA07A0ED8475}" SchemaVersion="110">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{5BB7A068-9D17-4F48-B6EE-CA07A0ED8475}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{5BB7A068-9D17-4F48-B6EE-CA07A0ED8475}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="SculptMaterial" ID="{E4E05F04-A070-49EE-8B25-B15938E5CDD2}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="0.6"/>
+					</PropertyList>
+					<ChildrenList>
+						<State Name="None" ID="{5E93FA8D-0806-49F1-90ED-EA797929DEB7}"/>
+						<State Name="Dirt" ID="{AD028E0E-59AB-4E15-B1BF-AF0D398EAD95}"/>
+						<State Name="Stone" ID="{2807517B-5E70-4EBA-BFC0-F5C64D6B3CEE}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

@@ -334,7 +334,7 @@ public class World : MonoBehaviour
             {
                 case 9: //Objects
                     var o = c.gameObject.GetComponent<Object>();
-                    if (!o.dislodged) c.gameObject.GetComponent<Object>().Dislodge();
+                    if (o != null && !o.dislodged) o.Dislodge();
                     break;
                 case 10: //Foliage
                     Destroy(c.gameObject);

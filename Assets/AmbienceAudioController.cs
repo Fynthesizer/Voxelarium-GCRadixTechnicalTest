@@ -9,6 +9,7 @@ public class AmbienceAudioController : MonoBehaviour
     [SerializeField] private FirstPersonController _player;
 
     [SerializeField] private AK.Wwise.Event _outdoorAmbienceEvent;
+    [SerializeField] private AK.Wwise.Event _caveAmbienceEvent;
     [SerializeField] private AK.Wwise.Event _rainEvent;
     [SerializeField] private AK.Wwise.Event _windEvent;
     [SerializeField] private AK.Wwise.RTPC _timeOfDayRTPC;
@@ -18,6 +19,7 @@ public class AmbienceAudioController : MonoBehaviour
     void Start()
     {
         _outdoorAmbienceEvent.Post(gameObject);
+        _caveAmbienceEvent.Post(gameObject);
         _rainEvent.Post(gameObject);
         _windEvent.Post(gameObject);
     }

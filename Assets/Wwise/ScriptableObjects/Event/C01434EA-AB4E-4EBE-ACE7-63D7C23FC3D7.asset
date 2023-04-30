@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19317e705b07abe44a9b3ff9df2c6b1e, type: 3}
+  m_Name: C01434EA-AB4E-4EBE-ACE7-63D7C23FC3D7
+  m_EditorClassIdentifier: 
+  objectName: Play_Splash
+  id: 3948925255
+  guid: C01434EA-AB4E-4EBE-ACE7-63D7C23FC3D7

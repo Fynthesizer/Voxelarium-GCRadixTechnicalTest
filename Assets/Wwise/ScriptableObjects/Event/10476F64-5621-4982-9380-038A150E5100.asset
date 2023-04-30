@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19317e705b07abe44a9b3ff9df2c6b1e, type: 3}
   m_Name: 10476F64-5621-4982-9380-038A150E5100
   m_EditorClassIdentifier: 
-  objectName: 
-  id: 2166136261
+  objectName: Play_Sculpting
+  id: 1233863437
   guid: 10476F64-5621-4982-9380-038A150E5100

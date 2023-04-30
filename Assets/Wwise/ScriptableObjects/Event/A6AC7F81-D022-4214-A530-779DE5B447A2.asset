@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19317e705b07abe44a9b3ff9df2c6b1e, type: 3}
+  m_Name: A6AC7F81-D022-4214-A530-779DE5B447A2
+  m_EditorClassIdentifier: 
+  objectName: Play_Ambience_Cave
+  id: 204269822
+  guid: A6AC7F81-D022-4214-A530-779DE5B447A2

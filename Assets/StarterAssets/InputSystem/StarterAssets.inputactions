@@ -94,6 +94,24 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleHelp",
+                    "type": "Button",
+                    "id": "2a23e033-91c0-48ea-ad87-19c43faafb88",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Snap",
+                    "type": "Button",
+                    "id": "b149078a-83f4-42ce-a2f3-ecd699e2ece7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -435,6 +453,28 @@
                     "processors": "Scale(factor=9)",
                     "groups": "",
                     "action": "NumberKeys",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7a92424-9202-48b1-8991-28b51361fb3b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleHelp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b272967-e854-47e7-b0c9-998949cec021",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Snap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

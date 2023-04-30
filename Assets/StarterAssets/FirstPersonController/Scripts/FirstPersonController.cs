@@ -68,8 +68,6 @@ public class FirstPersonController : MonoBehaviour
     public float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
 
-    private Vector3 _prevPosition;
-
     // timeout deltatime
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
@@ -77,7 +75,7 @@ public class FirstPersonController : MonoBehaviour
     private CharacterController _controller;
     private StarterAssetsInputs _input;
     private GameObject _mainCamera;
-    private InteractionManager _interactionManager;
+    private SculptingController _interactionManager;
 
     private const float _threshold = 0.01f;
 
@@ -87,15 +85,6 @@ public class FirstPersonController : MonoBehaviour
 
     private GameManager gameManager;
     private UIManager UIManager;
-
-    [Header("Sound Effects")]
-    public float footstepRate = 1f;
-    [SerializeField] private PlayerAudioController _audioController;
-
-    [Header("Player Data")]
-    public Inventory inventory;
-    public float statTickInterval = 0.2f;
-    public bool infiniteStamina = false;
 
     Dictionary<Voxel.Material, int> materialIndexDictionary = new Dictionary<Voxel.Material, int>()
         {
@@ -120,7 +109,7 @@ public class FirstPersonController : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _input = GetComponent<StarterAssetsInputs>();
-        _interactionManager = GetComponent<InteractionManager>();
+        _interactionManager = GetComponent<SculptingController>();
         _interactionManager.enabled = true;
 
         world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();
@@ -130,20 +119,6 @@ public class FirstPersonController : MonoBehaviour
         // reset our timeouts on start
         _jumpTimeoutDelta = JumpTimeout;
         _fallTimeoutDelta = FallTimeout;
-
-        InitializeInventory();
-    }
-
-    void InitializeInventory()
-    {
-        inventory = new Inventory(6);
-        inventory.AddItem(GameManager.GetItemByID("shovel"));
-        inventory.AddItem(GameManager.GetItemByID("dirt"), 500);
-        inventory.AddItem(GameManager.GetItemByID("boneJuice"), 30);
-        inventory.AddItem(GameManager.GetItemByID("energyJuice"), 10);
-        inventory.AddItem(GameManager.GetItemByID("flesh"), 50);
-        inventory.AddItem(GameManager.GetItemByID("tree1"), 5);
-        UIManager.UpdateInventory();
     }
 
     private void Update()
@@ -156,21 +131,10 @@ public class FirstPersonController : MonoBehaviour
         else Fly();
 
         GroundedCheck();
-
-        if (Vector3.Distance(_prevPosition, transform.position) > 0.01f)
-        {
-            // update the current ground material
-            groundMaterial = world.GetVoxel(transform.position + new Vector3(0, -1, 0)).material;
-            _audioController.SetGroundMaterial(groundMaterial);
-            _audioController.Movement(grounded);
-        }
-
-        _prevPosition = transform.position;
     }
 
     public void OnTeleport()
     {
-        //transform.position = ball.transform.position + new Vector3(1, 0.5f, 1);
         transform.position = new Vector3(0f, gameManager.world.chunkHeight, 0f);
 
     }
@@ -178,6 +142,11 @@ public class FirstPersonController : MonoBehaviour
     private void LateUpdate()
     {
         CameraRotation();
+    }
+
+    public Voxel.Material GetGroundMaterial()
+    {
+        return world.GetVoxel(transform.position + new Vector3(0, -1, 0)).material;
     }
 
     private void GroundedCheck()

@@ -19,7 +19,7 @@
 						<Action Name="" ID="{74062194-A0E9-4606-B440-60D89B08E5DB}" ShortID="973802203">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Ambience_Outdoors" ID="{26A976CE-0D1F-40F5-948E-A22AA2F81768}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+									<ObjectRef Name="Ambience_Critters" ID="{26A976CE-0D1F-40F5-948E-A22AA2F81768}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -31,6 +31,57 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Ambience_Rain" ID="{42FF6A6F-AE3E-41C2-9B57-35E7C1304D33}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Ambience_Wind" ID="{2885D709-75D7-4FD4-8207-70F86088524B}">
+					<ChildrenList>
+						<Action Name="" ID="{4EE50E97-69E5-4854-9B82-C886B66C8676}" ShortID="538333758">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ambience_Wind" ID="{07C440E8-AFDE-4DB6-AD2B-F61C34F0DC13}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Sculpting" ID="{10476F64-5621-4982-9380-038A150E5100}">
+					<ChildrenList>
+						<Action Name="" ID="{85665245-430A-4815-9DC9-47B0168E45B4}" ShortID="726866248">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="0.25"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sculpting" ID="{AD335AFC-41BC-4CEB-B0B2-A854A291B17D}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Sculpting" ID="{5AF7266C-444C-41A0-9089-D76140E63FB1}">
+					<ChildrenList>
+						<Action Name="" ID="{C3B231DE-6B8E-4F6B-8BD4-801ACA4E4DE5}" ShortID="1001464497">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="7"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.25"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sculpting" ID="{AD335AFC-41BC-4CEB-B0B2-A854A291B17D}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Ambience_Cave" ID="{A6AC7F81-D022-4214-A530-779DE5B447A2}">
+					<ChildrenList>
+						<Action Name="" ID="{6C11DE03-8A61-4D3C-A5AA-E95273A77EB1}" ShortID="21905645">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ambience_Cave" ID="{A008B2D9-572E-4018-9250-1B0165E52AAD}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

@@ -215,12 +215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07dbd80a6c7ba0f4289dc0eade1328b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 77674204
+  seed: 30199936
   width: 16
   height: 128
   length: 16
   snowHeight: 96
-  chunkPos: {x: 16, y: -7}
+  chunkPos: {x: 8, y: 9}
   voxelSize: 1
   terrain: {fileID: 4604681557242401058}
   objects: {fileID: 7200050011427839432}

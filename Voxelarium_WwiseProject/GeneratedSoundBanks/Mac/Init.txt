@@ -2,6 +2,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 	2082818283	SculptMaterial			\Default Work Unit\SculptMaterial	
 
 State	ID	Name	State Group			Notes
+	748895195	None	SculptMaterial			
 	1216965916	Stone	SculptMaterial			
 	2195636714	Dirt	SculptMaterial			
 

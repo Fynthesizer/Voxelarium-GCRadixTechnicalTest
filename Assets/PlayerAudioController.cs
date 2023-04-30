@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using AK.Wwise;
+using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerAudioController : MonoBehaviour
 {
     [SerializeField] private BubblespaceAnalyser _bubblespaceAnalyser;
+    [SerializeField] private FirstPersonController _firstPersonController;
     [SerializeField] private GameObject _target;
+    [SerializeField] private InputActionAsset _inputActions;
 
     [Header("Footsteps")]
     [SerializeField] private AK.Wwise.Event _footstepEvent;
@@ -26,6 +30,9 @@ public class PlayerAudioController : MonoBehaviour
     [SerializeField] private Voxel.Material _dirtSculptMaterials;
     [SerializeField] private Voxel.Material _stoneSculptMaterials;
 
+    [Header("Acoustics Test")]
+    [SerializeField] private AK.Wwise.Event _snapEvent;
+
     void Start()
     {
         // Initialise ground material dictionary
@@ -34,32 +41,34 @@ public class PlayerAudioController : MonoBehaviour
         {
             _groundMaterialDictionary.Add(g.material, g.wwiseSwitch);
         }
+
+        _inputActions.FindAction("Snap").performed += SnapButtonPressed;
     }
 
-    public void Movement(bool grounded)
+    private void SnapButtonPressed(InputAction.CallbackContext context) => _snapEvent.Post(gameObject);
+
+    private void Update()
     {
         float distance = Vector3.Distance(transform.position, _prevPos);
         _lastStepDist += distance;
         _prevPos = transform.position;
 
-        if (_lastStepDist > _footstepRate && grounded)
+        if (!_firstPersonController.enabled) return;
+
+        if (_lastStepDist > _footstepRate && _firstPersonController.grounded)
         {
+            SetGroundMaterial(_firstPersonController.GetGroundMaterial());
             PlayFootstep();
             _lastStepDist = 0f;
         }
-
-        _bubblespaceAnalyser.UpdateBubble();
     }
 
 
-    public void PlayFootstep()
-    {
-        _footstepEvent.Post(gameObject);
-    }
+    public void PlayFootstep() => _footstepEvent.Post(gameObject);
 
     public void SetGroundMaterial(Voxel.Material material)
     {
-        if (material == Voxel.Material.Air) return;
+        if (material == Voxel.Material.Air || material == 0) return;
         _groundMaterialDictionary[material].SetValue(gameObject);
     }
 

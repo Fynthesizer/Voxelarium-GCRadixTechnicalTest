@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{79218702-F001-13DE-24E2-ED3489700E55}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{4EA6547D-C65C-3754-C0D2-D7A0033F76DB}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -44,6 +44,7 @@
 			<StateGroups>
 				<StateGroup Id="2082818283" Name="SculptMaterial">
 					<States>
+						<State Id="748895195" Name="None"/>
 						<State Id="1216965916" Name="Stone"/>
 						<State Id="2195636714" Name="Dirt"/>
 					</States>
@@ -61,17 +62,17 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{EF051F82-7E5D-3921-CEC1-B07431A625FC}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{CEC2FAB3-CE02-027A-4EF0-8A7D6CEA943E}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
-				<File Id="5709439" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>CHIL Forest Rain quiet with water drop on leaves few birds.wav</ShortName>
-					<CachePath>SFX/CHIL Forest Rain quiet with water drop on leaves few birds_10C4C929.wem</CachePath>
-				</File>
 				<File Id="60635659" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Stone_06.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_06_10C4C929.wem</CachePath>
+				</File>
+				<File Id="149047421" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ambience_stoneroom.wav</ShortName>
+					<CachePath>SFX/ambience_stoneroom_784F98E1.wem</CachePath>
 				</File>
 				<File Id="155865947" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Dirt_03.wav</ShortName>
@@ -79,7 +80,7 @@
 				</File>
 				<File Id="194700227" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Wind_Forest_Fienup_001.wav</ShortName>
-					<CachePath>SFX/Wind_Forest_Fienup_001_29A739A4.wem</CachePath>
+					<CachePath>SFX/Wind_Forest_Fienup_001_AA8B491B.wem</CachePath>
 				</File>
 				<File Id="231239467" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Sand_04.wav</ShortName>
@@ -95,7 +96,11 @@
 				</File>
 				<File Id="338079950" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMBISONIC_A EXT Late Summer Dusk 03.wav</ShortName>
-					<CachePath>SFX/AMBISONIC_A EXT Late Summer Dusk 03_10C4C929.wem</CachePath>
+					<CachePath>SFX/AMBISONIC_A EXT Late Summer Dusk 03_60C5E7CF.wem</CachePath>
+				</File>
+				<File Id="356859635" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>player_splash.wav</ShortName>
+					<CachePath>SFX/player_splash_10C4C929.wem</CachePath>
 				</File>
 				<File Id="424872928" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Sand_02.wav</ShortName>
@@ -117,6 +122,10 @@
 					<ShortName>Footsteps_Dirt_04.wav</ShortName>
 					<CachePath>SFX/Footsteps_Dirt_04_10C4C929.wem</CachePath>
 				</File>
+				<File Id="564823022" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Snap SP.wav</ShortName>
+					<CachePath>SFX/Snap SP_10C4C929.wem</CachePath>
+				</File>
 				<File Id="589509037" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_grass_07.wav</ShortName>
 					<CachePath>SFX/footsteps_grass_07_10C4C929.wem</CachePath>
@@ -127,11 +136,15 @@
 				</File>
 				<File Id="608614675" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SNW_06_Nature_Forest_Birds_Wind_Early Morning_Spring_Distant Sea_Mediterranean_Grece.wav</ShortName>
-					<CachePath>SFX/SNW_06_Nature_Forest_Birds_Wind_Early Morning_Spring_Distant Sea_Mediterranean_Grece_10C4C929.wem</CachePath>
+					<CachePath>SFX/SNW_06_Nature_Forest_Birds_Wind_Early Morning_Spring_Distant Sea_Mediterranean_Grece_DE3C9EC0.wem</CachePath>
 				</File>
 				<File Id="613335784" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Stone_05.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_05_10C4C929.wem</CachePath>
+				</File>
+				<File Id="625904251" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Rain in forest the day_120118_13.wav</ShortName>
+					<CachePath>SFX/Rain in forest the day_120118_13_69FF4FC0.wem</CachePath>
 				</File>
 				<File Id="652273397" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Stone_04.wav</ShortName>
@@ -178,22 +191,54 @@
 					<CachePath>SFX/Footsteps_Sand_06_10C4C929.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="113025464" Name="Audio Input" LibName="Wwise Audio Input" LibId="13107202"/>
+				</Custom>
+			</Plugins>
 			<Events>
-				<Event Id="790324878" Name="Play_Ambience_Outdoors" DurationType="OneShot" DurationMin="180.2105" DurationMax="180.2105">
+				<Event Id="204269822" Name="Play_Ambience_Cave" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="149047421"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="790324878" Name="Play_Ambience_Outdoors" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="338079950"/>
 						<MediaRef Id="608614675"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
 				</Event>
-				<Event Id="2378670719" Name="Play_Ambience_Rain" DurationType="OneShot" DurationMin="153.44106" DurationMax="153.44106">
+				<Event Id="2378670719" Name="Play_Ambience_Rain" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="5709439"/>
+						<MediaRef Id="625904251"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
 				</Event>
 				<Event Id="1913801107" Name="Play_Ambience_Wind" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="194700227"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="4015255420" Name="Play_AudioInput" DurationType="Unknown">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="113025464"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
 				</Event>
 				<Event Id="3854155799" Name="Play_Footsteps" DurationType="OneShot" DurationMin="0.24270834" DurationMax="1">
 					<AuxBusRefs>
@@ -264,10 +309,27 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
+				<Event Id="3858275350" Name="Play_Snap" DurationType="OneShot" DurationMin="0.18068027" DurationMax="0.18068027">
+					<MediaRefs>
+						<MediaRef Id="564823022"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3948925255" Name="Play_Splash" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.875" DurationMax="1.875">
+					<MediaRefs>
+						<MediaRef Id="356859635"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="985077522" Name="Stop_AudioInput" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="780683743" Name="Stop_Sculpting" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<GameParameters>
-				<GameParameter Id="744577782" Name="BubbleHeight"/>
+				<GameParameter Id="596440120" Name="BubbleAverage"/>
 				<GameParameter Id="2043403999" Name="Rain"/>
 				<GameParameter Id="3158975812" Name="WindStrength"/>
 				<GameParameter Id="3729505769" Name="TimeOfDay"/>
@@ -285,5 +347,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{29752BAD-0292-4F0A-BA6D-8D88B9242119}</FileHash>
+	<FileHash>{FC9B20F1-48E7-9A1D-11E6-5B7425A51BAB}</FileHash>
 </SoundBanksInfo>
