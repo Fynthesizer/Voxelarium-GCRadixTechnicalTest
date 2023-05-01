@@ -16,9 +16,10 @@ public class DebugText : MonoBehaviour
 
     void Update()
     {
-        float bubbleWidth = _bubblespaceAnalyser.SmoothedBubbleWidth;
-        float bubbleHeight = _bubblespaceAnalyser.SmoothedBubbleHeight;
+        string bubbleWidth = _bubblespaceAnalyser.SmoothedBubbleWidth.ToString("0.00");
+        string bubbleHeight = _bubblespaceAnalyser.SmoothedBubbleHeight.ToString("0.00");
+        string bubbleAbsorption = _bubblespaceAnalyser.SmoothedBubbleAbsorption.ToString("0.00");
 
-        _text.text = $"Bubble Width: {bubbleWidth}\nBubble Height: {bubbleHeight}";
+        _text.text = $"<b>Bubble Data</b>\nWidth: {bubbleWidth}\nHeight: {bubbleHeight}\nAbsorption: {bubbleAbsorption}";
     }
 }

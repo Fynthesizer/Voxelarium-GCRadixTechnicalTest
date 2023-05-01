@@ -14,7 +14,7 @@ public class WeatherManager : MonoBehaviour
     int hour = -1;
     [Range(0f, 90f)] public float sunElevation = 45f;
     public float sunIntensity = 1f;
-    public float moonIntensity = 0.4f;
+    public float moonIntensity = 0.5f;
 
     [Header("Weather")]
     public float cloudiness = 1f;
@@ -239,7 +239,8 @@ public class WeatherManager : MonoBehaviour
 
     void UpdateLights()
     {
-        if (hour <= 6 || hour > 18) //Night time
+        
+        if (timeOfDay <= 6 || timeOfDay > 20) // Night time
         {
             moonLight.intensity = moonIntensity;
             sunLight.intensity = 0f;
@@ -247,13 +248,29 @@ public class WeatherManager : MonoBehaviour
             moonLight.enabled = true;
             RenderSettings.ambientIntensity = 0.6f;
         }
-        else //Day time
+        else if (timeOfDay >= 6 && timeOfDay < 7) // Sunrise
+        {
+            sunLight.enabled = true;
+            float progress = Helpers.Map(timeOfDay, 6.0f, 7.0f, 0.0f, 1.0f);
+            sunLight.intensity = Mathf.Lerp(0f, sunIntensity, progress); //Dim sun
+            moonLight.intensity = Mathf.Lerp(moonIntensity, 0f, progress); //Brighten moon
+            RenderSettings.ambientIntensity = Mathf.Lerp(0.6f, 1f, progress);
+        }
+        else if (timeOfDay >= 7 && timeOfDay < 18) // Day time
         {
             moonLight.intensity = 0f;
             sunLight.intensity = sunIntensity;
             moonLight.enabled = false;
             sunLight.enabled = true;
             RenderSettings.ambientIntensity = 1f;
+        }
+        else if (timeOfDay >= 18 && timeOfDay < 19) // Sunset
+        {
+            moonLight.enabled = true;
+            float progress = Helpers.Map(timeOfDay, 18.0f, 19.0f, 0.0f, 1.0f);
+            sunLight.intensity = Mathf.Lerp(sunIntensity, 0f, progress); //Dim sun
+            moonLight.intensity = Mathf.Lerp(0f, moonIntensity, progress); //Brighten moon
+            RenderSettings.ambientIntensity = Mathf.Lerp(1f, 0.6f, progress);
         }
     }
 
@@ -373,7 +390,7 @@ public class WeatherManager : MonoBehaviour
 
         SetFog(Map(rainValue, 0f, 1f, 0.002f, 0.005f));
         sunIntensity = Map(rainValue, 0f, 1f, 1f, 0.5f);
-        moonIntensity = Map(rainValue, 0f, 1f, 0.4f, 0.2f);
+        moonIntensity = Map(rainValue, 0f, 1f, 0.5f, 0.2f);
 
         Shader.SetGlobalFloat("_Raining", rainValue);
         rainEmission.rateOverTime = Map(rainValue, 0f, 1f, 0, 2500);

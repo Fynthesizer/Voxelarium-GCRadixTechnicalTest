@@ -312,15 +312,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "0d180995-b549-4c50-9b71-60d2d7edc44b",
-                    "path": "<Keyboard>/ctrl",
+                    "name": "1D Axis",
+                    "id": "918129c2-bcea-4679-ab00-c70d79a2cbc7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeMaterial",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ecff5a1a-b9ee-43d0-b63f-3624217cc552",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ChangeMaterial",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "97001ace-ceda-4439-8819-d872bfb0281b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeMaterial",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -479,7 +501,7 @@
                 {
                     "name": "",
                     "id": "6b272967-e854-47e7-b0c9-998949cec021",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

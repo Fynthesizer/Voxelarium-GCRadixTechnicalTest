@@ -9,12 +9,13 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{0D204DCC-FBF9-09DE-E8C0-CBCD5C1CE71D}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{C48B946C-526F-A1E7-EF3F-83EB77F0F081}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
 				<Custom>
 					<Plugin Id="159617704" Name="RoomVerb (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="308432466" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="575674815" Name="Resonance Audio Renderer (Custom)" LibName="Resonance Audio Renderer" LibId="6557955"/>
 				</Custom>
 				<AudioDevices>
@@ -37,16 +38,19 @@
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="159617704"/>
+							<PluginRef Id="308432466"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
 			<GameParameters>
+				<GameParameter Id="363247939" Name="PlayerSubmersion"/>
 				<GameParameter Id="596440120" Name="BubbleAverage"/>
 				<GameParameter Id="744577782" Name="BubbleHeight"/>
 				<GameParameter Id="2043403999" Name="Rain"/>
 				<GameParameter Id="2967072453" Name="BubbleWidth"/>
 				<GameParameter Id="3158975812" Name="WindStrength"/>
+				<GameParameter Id="3725968720" Name="BubbleAbsorption"/>
 				<GameParameter Id="3729505769" Name="TimeOfDay"/>
 			</GameParameters>
 			<StateGroups>
@@ -70,7 +74,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{3A3DBB89-4E60-86EF-9C46-53F56093324A}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{99038641-3CFB-3A8D-FE8B-1BBB887E390B}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -78,9 +82,17 @@
 					<ShortName>Footsteps_Stone_06.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_06_10C4C929.wem</CachePath>
 				</File>
+				<File Id="82097394" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 14.wav</ShortName>
+					<CachePath>SFX/Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 14_10C4C929.wem</CachePath>
+				</File>
 				<File Id="109275559" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Forest_Summer_Sunrise_NearLake_LightWind_Birds_GreatTit_Swan_Woodpecker_FuMa 4.wav</ShortName>
 					<CachePath>SFX/Forest_Summer_Sunrise_NearLake_LightWind_Birds_GreatTit_Swan_Woodpecker_FuMa 4_0CD668BD.wem</CachePath>
+				</File>
+				<File Id="110041541" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 13.wav</ShortName>
+					<CachePath>SFX/Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 13_10C4C929.wem</CachePath>
 				</File>
 				<File Id="149047421" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ambience_stoneroom.wav</ShortName>
@@ -106,13 +118,13 @@
 					<ShortName>Footsteps_Stone_02.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_02_10C4C929.wem</CachePath>
 				</File>
-				<File Id="338079950" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMBISONIC_A EXT Late Summer Dusk 03.wav</ShortName>
-					<CachePath>SFX/AMBISONIC_A EXT Late Summer Dusk 03_60C5E7CF.wem</CachePath>
-				</File>
 				<File Id="356859635" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>player_splash.wav</ShortName>
 					<CachePath>SFX/player_splash_10C4C929.wem</CachePath>
+				</File>
+				<File Id="416544082" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 10.wav</ShortName>
+					<CachePath>SFX/Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 10_10C4C929.wem</CachePath>
 				</File>
 				<File Id="424872928" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Sand_02.wav</ShortName>
@@ -129,6 +141,10 @@
 				<File Id="461156570" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Dirt_02.wav</ShortName>
 					<CachePath>SFX/Footsteps_Dirt_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="486196973" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 11.wav</ShortName>
+					<CachePath>SFX/Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 11_10C4C929.wem</CachePath>
 				</File>
 				<File Id="516849955" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Dirt_04.wav</ShortName>
@@ -174,6 +190,10 @@
 					<ShortName>Sculpting_Dirt.wav</ShortName>
 					<CachePath>SFX/Sculpting_Dirt_D79FB2B7.wem</CachePath>
 				</File>
+				<File Id="800221165" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 15.wav</ShortName>
+					<CachePath>SFX/Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 15_10C4C929.wem</CachePath>
+				</File>
 				<File Id="800834350" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Sand_05.wav</ShortName>
 					<CachePath>SFX/Footsteps_Sand_05_10C4C929.wem</CachePath>
@@ -181,6 +201,10 @@
 				<File Id="847887956" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Grass_04.wav</ShortName>
 					<CachePath>SFX/Footsteps_Grass_04_10C4C929.wem</CachePath>
+				</File>
+				<File Id="886432167" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMBISONIC_A EXT Late Summer Dusk 03 5.wav</ShortName>
+					<CachePath>SFX/AMBISONIC_A EXT Late Summer Dusk 03 5_BFEA5E12.wem</CachePath>
 				</File>
 				<File Id="935958708" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Dirt_01.wav</ShortName>
@@ -197,6 +221,10 @@
 				<File Id="1063826855" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Sand_06.wav</ShortName>
 					<CachePath>SFX/Footsteps_Sand_06_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1068913131" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 12.wav</ShortName>
+					<CachePath>SFX/Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 12_10C4C929.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -217,7 +245,7 @@
 				<Event Id="790324878" Name="Play_Ambience_Outdoors" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="109275559"/>
-						<MediaRef Id="338079950"/>
+						<MediaRef Id="886432167"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="348963605" Name="Reverb"/>
@@ -249,7 +277,15 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3854155799" Name="Play_Footsteps" DurationType="OneShot" DurationMin="0.24270834" DurationMax="1">
+				<Event Id="3854155799" Name="Play_Footsteps" DurationType="OneShot" DurationMin="0.7274375" DurationMax="1.0640209">
+					<MediaRefs>
+						<MediaRef Id="82097394"/>
+						<MediaRef Id="110041541"/>
+						<MediaRef Id="416544082"/>
+						<MediaRef Id="486196973"/>
+						<MediaRef Id="800221165"/>
+						<MediaRef Id="1068913131"/>
+					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
@@ -348,6 +384,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 			<GameParameters>
+				<GameParameter Id="363247939" Name="PlayerSubmersion"/>
 				<GameParameter Id="596440120" Name="BubbleAverage"/>
 				<GameParameter Id="2043403999" Name="Rain"/>
 				<GameParameter Id="3158975812" Name="WindStrength"/>
@@ -366,5 +403,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{56CBDB6D-109D-5E5A-8182-C537CA8F9BA3}</FileHash>
+	<FileHash>{5BDBBB71-E19D-93F6-06D0-E1057B2850A5}</FileHash>
 </SoundBanksInfo>

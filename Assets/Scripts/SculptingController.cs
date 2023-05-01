@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,16 +15,22 @@ public class SculptingController : MonoBehaviour
     UIManager ui;
 
     [SerializeField] PlayerAudioController _audioController;
+    [SerializeField] InputActionAsset _inputActions;
+    [SerializeField] TextMeshProUGUI _currentMaterialIndicator;
 
-    bool targetVisible;
-    Vector3 targetPosition;
-    Quaternion targetRotation;
-    float targetSize = 1f;
+    private bool targetVisible;
+    private Vector3 targetPosition;
+    private Quaternion targetRotation;
+    private float targetSize = 1f;
 
-    public float minDistance = 2;
-    public float maxDistance = 100;
-    public float sculptSpeed = 0.05f;
-    public float sculptRadius = 2;
+    [Header("Sculpting")]
+    public Voxel.Material CurrentMaterial;
+    [SerializeField] private Voxel.Material[] _placeableMaterials;
+    private int _currentMaterialIndex = 0;
+    [SerializeField] private float minDistance = 2;
+    [SerializeField] private float maxDistance = 100;
+    [SerializeField] private float sculptSpeed = 0.05f;
+    [SerializeField] private float sculptRadius = 2;
 
     public bool isSculpting = false;
 
@@ -32,7 +41,22 @@ public class SculptingController : MonoBehaviour
         world = GameManager.gm.world;
         ui = GameManager.gm.ui;
 
+        _inputActions.FindAction("ChangeMaterial").performed += ChangeMaterialPressed;
+        CurrentMaterial = _placeableMaterials[_currentMaterialIndex];
+
         StartCoroutine(Interaction());
+    }
+
+    private void ChangeMaterialPressed(InputAction.CallbackContext callback)
+    {
+        int direction = (int)callback.ReadValue<float>();
+        _currentMaterialIndex += direction;
+        _currentMaterialIndex %= _placeableMaterials.Length;
+        if(_currentMaterialIndex < 0) _currentMaterialIndex = _placeableMaterials.Length - 1;
+
+        CurrentMaterial = _placeableMaterials[_currentMaterialIndex];
+
+        if (_currentMaterialIndicator != null) _currentMaterialIndicator.text = Enum.GetName(typeof(Voxel.Material), CurrentMaterial);
     }
 
     void Update()
@@ -64,10 +88,11 @@ public class SculptingController : MonoBehaviour
             }
             else targetVisible = false;
 
+            // Adjust sculpting radius
             sculptRadius += (Mouse.current.scroll.ReadValue().y / 960);
             sculptRadius = Mathf.Clamp(sculptRadius, 1, 10);
 
-            //Place
+            // Place
             if (Mouse.current.leftButton.isPressed == true &&
                 Physics.Raycast(ray, out hit, maxDistance, layerMask) &&
                 hit.distance > minDistance && hit.distance < maxDistance)
@@ -75,14 +100,12 @@ public class SculptingController : MonoBehaviour
                 if (!isSculpting)
                 {
                     _audioController.ToggleSculptSound(true);
-                    _audioController.SetSculptMaterial(Voxel.Material.Dirt);
+                    _audioController.SetSculptMaterial(CurrentMaterial);
                     isSculpting = true;
                 }
-
-                //digSound.setParameterByName("Material", materialIndexDictionary[s.material]);
-                world.PlaceTerrain(hit.point, sculptSpeed, sculptRadius, Voxel.Material.Dirt);
+                world.PlaceTerrain(hit.point, sculptSpeed, sculptRadius, CurrentMaterial);
             }
-            //Dig
+            // Destroy
             else if (Mouse.current.rightButton.isPressed == true &&
                 Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) &&
                 hit.distance < maxDistance)
@@ -98,7 +121,7 @@ public class SculptingController : MonoBehaviour
                 world.ModifyTerrain(hit.point, -sculptSpeed,sculptRadius);
             }
 
-            //No action
+            // No action
             else if (isSculpting)
             {
                 _audioController.ToggleSculptSound(false);

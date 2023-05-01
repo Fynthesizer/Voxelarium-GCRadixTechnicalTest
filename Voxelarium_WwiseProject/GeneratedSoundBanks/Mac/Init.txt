@@ -7,9 +7,10 @@ State	ID	Name	State Group			Notes
 	2195636714	Dirt	SculptMaterial			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
-	596440120	BubbleAverage			\Default Work Unit\BubbleAverage	
-	744577782	BubbleHeight			\Default Work Unit\BubbleHeight	
-	2967072453	BubbleWidth			\Default Work Unit\BubbleWidth	
+	596440120	BubbleAverage			\Default Work Unit\Bubblespace\BubbleAverage	
+	744577782	BubbleHeight			\Default Work Unit\Bubblespace\BubbleHeight	
+	2967072453	BubbleWidth			\Default Work Unit\Bubblespace\BubbleWidth	
+	3725968720	BubbleAbsorption			\Default Work Unit\Bubblespace\BubbleAbsorption	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	2903397179	Ambisonics			\Default Work Unit\Master Audio Bus\Ambisonics	
@@ -20,6 +21,7 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 
 Effect plug-ins	ID	Name	Type				Notes
 	159617704	RoomVerb (Custom)	Wwise RoomVerb			
+	308432466	Delay (Custom)	Wwise Delay			
 	575674815	Resonance Audio Renderer (Custom)	Resonance Audio Renderer			
 
 Audio Devices	ID	Name	Type				Notes

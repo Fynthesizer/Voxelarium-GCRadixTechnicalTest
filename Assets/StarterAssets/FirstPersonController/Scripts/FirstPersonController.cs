@@ -39,11 +39,11 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Movement States")]
     [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
-    public bool grounded = true;
-    public bool submerged = false;
-    public bool swimming = false;
-    public bool flyMode = false;
-    public Voxel.Material groundMaterial;
+    public bool Grounded = true;
+    public bool Submerged = false;
+    public bool Swimming = false;
+    public bool FlyMode = false;
+    public Voxel.Material GroundMaterial;
     [Tooltip("Useful for rough ground")]
     public float GroundedOffset = -0.14f;
     [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
@@ -113,7 +113,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-        if (!flyMode)
+        if (!FlyMode)
         {
             JumpAndGravity();
             Move();
@@ -145,17 +145,17 @@ public class FirstPersonController : MonoBehaviour
         Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
         bool touchingGround = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
-        if (!grounded && touchingGround)
+        if (!Grounded && touchingGround)
         {
-            grounded = true;
+            Grounded = true;
         }
-        else if (grounded && !touchingGround)
+        else if (Grounded && !touchingGround)
         {
-            grounded = false;
+            Grounded = false;
         }
 
         //Check if swimming
-        swimming = transform.position.y < 8.7f;
+        Swimming = transform.position.y < 8.7f;
     }
 
     private void CameraRotation()
@@ -183,7 +183,7 @@ public class FirstPersonController : MonoBehaviour
         // set target speed based on move speed, sprint speed and if sprint is pressed
         float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
         // Adjust speed when swimming
-        if (swimming) targetSpeed /= 2;
+        if (Swimming) targetSpeed /= 2;
 
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -282,13 +282,13 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnToggleFlyMode()
     {
-        flyMode = !flyMode;
+        FlyMode = !FlyMode;
     }
 
     private void JumpAndGravity()
     {
 
-        if (grounded)
+        if (Grounded)
         {
             // reset the fall timeout timer
             _fallTimeoutDelta = FallTimeout;
@@ -323,7 +323,7 @@ public class FirstPersonController : MonoBehaviour
                 _fallTimeoutDelta -= Time.deltaTime;
             }
 
-            if (swimming) _verticalVelocity = -2f;
+            if (Swimming) _verticalVelocity = -2f;
 
             // if we are not grounded, do not jump
             //_input.jump = false;
@@ -362,7 +362,7 @@ public class FirstPersonController : MonoBehaviour
         Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
         Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-        if (grounded) Gizmos.color = transparentGreen;
+        if (Grounded) Gizmos.color = transparentGreen;
         else Gizmos.color = transparentRed;
 
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
@@ -373,7 +373,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (other.gameObject.layer == 4)
         {
-            submerged = true;
+            Submerged = true;
         }
     }
 
@@ -382,7 +382,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (other.gameObject.layer == 4)
         {
-            submerged = false;
+            Submerged = false;
         }
     }
 
@@ -391,25 +391,5 @@ public class FirstPersonController : MonoBehaviour
     {
         alive = false;
         print("Dead :(");
-    }
-}
-
-[Serializable]
-public class PlayerStats
-{
-    public float maxHealth;
-    public float health;
-    public float maxSatiety;
-    public float satiety;
-    public float temperature;
-    public float maxStamina;
-    public float stamina;
-
-    public PlayerStats(float health, float satiety, float stamina)
-    {
-        this.maxHealth = this.health = health;
-        this.maxSatiety = this.satiety = satiety;
-        this.maxStamina = this.stamina = stamina;
-        this.temperature = 0f;
     }
 }

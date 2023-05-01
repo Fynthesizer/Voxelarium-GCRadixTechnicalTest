@@ -503,7 +503,7 @@
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-7</Value>
+												<Value>-10</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -717,6 +717,11 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
+																		<XPos>6.22807</XPos>
+																		<YPos>46</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
 																		<XPos>14.91228</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
@@ -753,13 +758,13 @@
 																<PointList>
 																	<Point>
 																		<XPos>0</XPos>
-																		<YPos>-6.95547</YPos>
+																		<YPos>-9.62531</YPos>
 																		<Flags>5</Flags>
 																		<SegmentShape>Log2</SegmentShape>
 																	</Point>
 																	<Point>
-																		<XPos>4.7807</XPos>
-																		<YPos>-5.33296</YPos>
+																		<XPos>7.01754</XPos>
+																		<YPos>-8.34108</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Exp2</SegmentShape>
 																	</Point>
@@ -1580,7 +1585,7 @@
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-7</Value>
+										<Value>-11</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>

@@ -14,6 +14,7 @@ public class PlayerAudioController : MonoBehaviour
 
     [Header("Footsteps")]
     [SerializeField] private AK.Wwise.Event _footstepEvent;
+    [SerializeField] private AK.Wwise.RTPC _submersionRTPC;
     [SerializeField] private float _footstepRate;
     private float _lastStepDist = 0f;
     private Vector3 _prevPos;
@@ -55,9 +56,11 @@ public class PlayerAudioController : MonoBehaviour
 
         if (!_firstPersonController.enabled) return;
 
-        if (_lastStepDist > _footstepRate && _firstPersonController.grounded)
+        if (_lastStepDist > _footstepRate && (_firstPersonController.Grounded || _firstPersonController.Submerged))
         {
             SetGroundMaterial(_firstPersonController.GetGroundMaterial());
+            print(_firstPersonController.Submerged);
+            _submersionRTPC.SetValue(gameObject, _firstPersonController.Submerged ? 1f : 0f);
             PlayFootstep();
             _lastStepDist = 0f;
         }

@@ -24,51 +24,58 @@ public class BubblespaceAnalyser : MonoBehaviour
     [Tooltip("Which collision layers should be detected by the raycasts")]
     [SerializeField] private LayerMask _layerMask;
 
+    [SerializeField] private AcousticProperties[] _acousticProperties;
+    private Dictionary<Voxel.Material, AcousticProperties> _acousticPropertiesDictionary;
+
     [Header("Debug")]
     [SerializeField] private bool _drawDebug;
     [SerializeField] private Mesh _debugHitMesh;
     [SerializeField] private float _debugHitSize;
     [SerializeField] private Material _debugHitMaterial;
-    [SerializeField] private List<Material> _debugRayMaterials;
-    [SerializeField] private GameObject _debugBubble;
-    private LineRenderer[] _debugRays;
     private Vector3[] _hitPoints;
 
     [Header("Wwise Parameters")]
     [SerializeField] private AK.Wwise.RTPC _bubbleWidthRTPC;
     [SerializeField] private AK.Wwise.RTPC _bubbleHeightRTPC;
     [SerializeField] private AK.Wwise.RTPC _bubbleAverageRTPC;
+    [SerializeField] private AK.Wwise.RTPC _bubbleAbsorptionRTPC;
 
     [HideInInspector] public float SmoothedBubbleWidth;
     [HideInInspector] public float SmoothedBubbleHeight;
+    [HideInInspector] public float SmoothedBubbleAbsorption;
 
     private float _bubbleWidth;
     private float _bubbleHeight;
+    private float _bubbleAverage;
+    private float _bubbleAbsorption;
     private int _rotationPhase;
     private float _rotationAngle;
-    private float _bubbleAverage;
+    
     private Vector3 _previousPosition;
 
-    private DistanceBuffer _bubbleWidthBuffer;
-    private DistanceBuffer _bubbleHeightBuffer;
+    private Buffer _bubbleWidthBuffer;
+    private Buffer _bubbleHeightBuffer;
+    private Buffer _bubbleAbsorptionBuffer;
+
+    private World _world;
 
     void Start()
     {
-        _bubbleWidthBuffer = new DistanceBuffer(_bufferSize);
-        _bubbleHeightBuffer = new DistanceBuffer(_bufferSize);
+        _world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();
+
+        _bubbleWidthBuffer = new Buffer(_bufferSize);
+        _bubbleHeightBuffer = new Buffer(_bufferSize);
+        _bubbleAbsorptionBuffer = new Buffer(_bufferSize);
+
         _rotationAngle = 360f / _rayCount;
         _hitPoints = new Vector3[_rotationPhases * 2];
-        //_debugRays = new LineRenderer[_rayCount * 2];
 
-        /*
-        for (int i = 0; i < _rayCount * 2; i++)
+        // Create a dictionary for easy access to different materials' acoustic properties
+        _acousticPropertiesDictionary = new Dictionary<Voxel.Material, AcousticProperties>();
+        foreach (AcousticProperties p in _acousticProperties)
         {
-            _debugRays[i] = new GameObject("DebugLine").AddComponent<LineRenderer>();
-            _debugRays[i].SetMaterials(_debugRayMaterials);
-            _debugRays[i].startWidth = 0.001f;
-            _debugRays[i].endWidth = 0.001f;
+            _acousticPropertiesDictionary.Add(p.Material, p);
         }
-        */
     }
 
     private void Update()
@@ -110,17 +117,26 @@ public class BubblespaceAnalyser : MonoBehaviour
             _bubbleAverage = (SmoothedBubbleWidth + SmoothedBubbleHeight) / 2;
             _bubbleAverageRTPC.SetGlobalValue(_bubbleAverage);
         }
+
+        if (Mathf.Abs(_bubbleAbsorption - SmoothedBubbleAbsorption) > 0.01f)
+        {
+            SmoothedBubbleAbsorption = Mathf.Lerp(SmoothedBubbleAbsorption, _bubbleAbsorption, 1f / 6f);
+            _bubbleAbsorptionRTPC.SetGlobalValue(SmoothedBubbleAbsorption);
+        }
     }
 
     public void UpdateBubble()
     {
-        Vector2 bubble = GetBubble();
+        Bubble bubble = GetBubble();
 
-        _bubbleWidthBuffer.Enqueue(bubble.x);
+        _bubbleWidthBuffer.Enqueue(bubble.Width);
         _bubbleWidth = _bubbleWidthBuffer.GetAverageOfSmallest(3);
 
-        _bubbleHeightBuffer.Enqueue(bubble.y);
+        _bubbleHeightBuffer.Enqueue(bubble.Height);
         _bubbleHeight = _bubbleHeightBuffer.GetAverageOfSmallest(3);
+
+        _bubbleAbsorptionBuffer.Enqueue(bubble.Absorption);
+        _bubbleAbsorption = _bubbleAbsorptionBuffer.GetAverageOfSmallest(4);
 
         _rotationPhase++;
         if (_rotationPhase >= _rotationPhases) _rotationPhase = 0;
@@ -136,14 +152,16 @@ public class BubblespaceAnalyser : MonoBehaviour
         Gizmos.DrawSphere(transform.position, SmoothedBubbleHeight);
     }
 
-    private Vector2 GetBubble()
+    private Bubble GetBubble()
     {
         float rayAngle = _rotationPhase * (360 / _rotationPhases);
-        float averageHorizontalDistance = 0f;
-        float averageVerticalDistance = 0f;
+        float averageHorizontalDistance;
+        float averageVerticalDistance;
+        float averageAbsorption;
 
         float[] horizontalDistances = new float[_rayCount];
         float[] verticalDistances = new float[_rayCount];
+        List<float> absorptionValues = new List<float>();
 
         for (int i = 0; i < _rayCount; i++)
         {
@@ -155,6 +173,8 @@ public class BubblespaceAnalyser : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo, _maxRaycastDistance, _layerMask))
             {
                 horizontalDistances[i] = hitInfo.distance;
+                Voxel.Material hitMaterial = _world.GetVoxel(hitInfo.point).material;
+                absorptionValues.Add(_acousticPropertiesDictionary[hitMaterial].Absorption);
             }
             else
             {
@@ -173,6 +193,8 @@ public class BubblespaceAnalyser : MonoBehaviour
                 if (Physics.Raycast(ray, out hitInfo, _maxRaycastDistance, _layerMask))
                 {
                     verticalDistances[i] = hitInfo.distance;
+                    Voxel.Material hitMaterial = _world.GetVoxel(hitInfo.point).material;
+                    absorptionValues.Add(_acousticPropertiesDictionary[hitMaterial].Absorption);
                 }
                 else
                 {
@@ -192,7 +214,10 @@ public class BubblespaceAnalyser : MonoBehaviour
         RemoveOutliers(verticalDistances, 1.0f);
         averageVerticalDistance = verticalDistances.Average();
 
-        return new Vector2(averageHorizontalDistance, averageVerticalDistance);
+        if (absorptionValues.Count > 0.0f) averageAbsorption = absorptionValues.Average();
+        else averageAbsorption = 0.0f;
+
+        return new Bubble(averageHorizontalDistance, averageVerticalDistance, averageAbsorption);
     }
 
     void RemoveOutliers(float[] array, float deviationThreshold)
@@ -214,11 +239,12 @@ public class BubblespaceAnalyser : MonoBehaviour
     }
 }
 
-public class DistanceBuffer : Queue<float>
+// Custom container inheriting from queue which automatically dequeues the oldest element if it is over capacity
+public class Buffer : Queue<float>
 {
     public int Limit { get; set; }
 
-    public DistanceBuffer(int limit) : base(limit)
+    public Buffer(int limit) : base(limit)
     {
         Limit = limit;
     }
@@ -236,5 +262,26 @@ public class DistanceBuffer : Queue<float>
     {
         var smallest = this.OrderBy(x => x).Take(sampleSize);
         return smallest.Average();
+    }
+}
+
+[System.Serializable]
+public struct AcousticProperties
+{
+    public Voxel.Material Material;
+    public float Absorption;
+}
+
+public struct Bubble
+{
+    public float Width;
+    public float Height;
+    public float Absorption;
+
+    public Bubble (float width, float height, float absorption)
+    {
+        Width = width;
+        Height = height;
+        Absorption = absorption;
     }
 }

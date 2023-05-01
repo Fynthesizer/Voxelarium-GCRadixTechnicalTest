@@ -62,9 +62,11 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID BUBBLEABSORPTION = 3725968720U;
         static const AkUniqueID BUBBLEAVERAGE = 596440120U;
         static const AkUniqueID BUBBLEHEIGHT = 744577782U;
         static const AkUniqueID BUBBLEWIDTH = 2967072453U;
+        static const AkUniqueID PLAYERSUBMERSION = 363247939U;
         static const AkUniqueID RAIN = 2043403999U;
         static const AkUniqueID TIMEOFDAY = 3729505769U;
         static const AkUniqueID WINDSTRENGTH = 3158975812U;
