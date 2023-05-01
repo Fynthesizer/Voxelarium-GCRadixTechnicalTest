@@ -29,5 +29,7 @@ public class AmbienceAudioController : MonoBehaviour
         _rainRTPC.SetGlobalValue(_weatherManager.rainValue);
         _timeOfDayRTPC.SetGlobalValue(_weatherManager.timeOfDay);
         _windRTPC.SetGlobalValue(_weatherManager.windSpeed + (_player.transform.position.y / 96f));
+
+        transform.position = _player.transform.position;
     }
 }

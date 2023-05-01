@@ -9,12 +9,13 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{4EA6547D-C65C-3754-C0D2-D7A0033F76DB}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{6F7CBCB6-9B39-41A6-5242-3B54A1C801E9}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
 				<Custom>
 					<Plugin Id="159617704" Name="RoomVerb (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="575674815" Name="Resonance Audio Renderer (Custom)" LibName="Resonance Audio Renderer" LibId="6557955"/>
 				</Custom>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
@@ -22,6 +23,13 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="2903397179" Name="Ambisonics">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="575674815"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 			<AuxBusses>
@@ -62,13 +70,17 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{CEC2FAB3-CE02-027A-4EF0-8A7D6CEA943E}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{3A3DBB89-4E60-86EF-9C46-53F56093324A}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
 				<File Id="60635659" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Stone_06.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_06_10C4C929.wem</CachePath>
+				</File>
+				<File Id="109275559" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Forest_Summer_Sunrise_NearLake_LightWind_Birds_GreatTit_Swan_Woodpecker_FuMa 4.wav</ShortName>
+					<CachePath>SFX/Forest_Summer_Sunrise_NearLake_LightWind_Birds_GreatTit_Swan_Woodpecker_FuMa 4_0CD668BD.wem</CachePath>
 				</File>
 				<File Id="149047421" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ambience_stoneroom.wav</ShortName>
@@ -134,17 +146,13 @@
 					<ShortName>Footsteps_Stone_03.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_03_10C4C929.wem</CachePath>
 				</File>
-				<File Id="608614675" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SNW_06_Nature_Forest_Birds_Wind_Early Morning_Spring_Distant Sea_Mediterranean_Grece.wav</ShortName>
-					<CachePath>SFX/SNW_06_Nature_Forest_Birds_Wind_Early Morning_Spring_Distant Sea_Mediterranean_Grece_DE3C9EC0.wem</CachePath>
-				</File>
 				<File Id="613335784" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Stone_05.wav</ShortName>
 					<CachePath>SFX/Footsteps_Stone_05_10C4C929.wem</CachePath>
 				</File>
 				<File Id="625904251" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Rain in forest the day_120118_13.wav</ShortName>
-					<CachePath>SFX/Rain in forest the day_120118_13_69FF4FC0.wem</CachePath>
+					<CachePath>SFX/Rain in forest the day_120118_13_4119AE34.wem</CachePath>
 				</File>
 				<File Id="652273397" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Stone_04.wav</ShortName>
@@ -194,6 +202,7 @@
 			<Plugins>
 				<Custom>
 					<Plugin Id="113025464" Name="Audio Input" LibName="Wwise Audio Input" LibId="13107202"/>
+					<Plugin Id="575674815" Name="Resonance Audio Renderer (Custom)" LibName="Resonance Audio Renderer" LibId="6557955"/>
 				</Custom>
 			</Plugins>
 			<Events>
@@ -207,8 +216,8 @@
 				</Event>
 				<Event Id="790324878" Name="Play_Ambience_Outdoors" DurationType="Infinite">
 					<MediaRefs>
+						<MediaRef Id="109275559"/>
 						<MediaRef Id="338079950"/>
-						<MediaRef Id="608614675"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="348963605" Name="Reverb"/>
@@ -328,6 +337,16 @@
 				<Event Id="985077522" Name="Stop_AudioInput" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="780683743" Name="Stop_Sculpting" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
+			<Busses>
+				<Bus Id="2903397179" Name="Ambisonics">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="575674815"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
 			<GameParameters>
 				<GameParameter Id="596440120" Name="BubbleAverage"/>
 				<GameParameter Id="2043403999" Name="Rain"/>
@@ -347,5 +366,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FC9B20F1-48E7-9A1D-11E6-5B7425A51BAB}</FileHash>
+	<FileHash>{6BA3F010-38AF-0848-0922-DEC108D1E3DB}</FileHash>
 </SoundBanksInfo>

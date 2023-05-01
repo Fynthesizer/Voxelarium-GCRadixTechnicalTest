@@ -39,18 +39,26 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3158975812	WindStrength			\Default Work Unit\WindStrength	
 	3729505769	TimeOfDay			\Default Work Unit\TimeOfDay	
 
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	2903397179	Ambisonics			\Default Work Unit\Master Audio Bus\Ambisonics	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Effect plug-ins	ID	Name	Type				Notes
+	575674815	Resonance Audio Renderer (Custom)	Resonance Audio Renderer			
+
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	113025464	Audio Input	Wwise Audio Input		\Actor-Mixer Hierarchy\Default Work Unit\AudioInput\Audio Input	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	60635659	Footsteps_Stone_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Stone\Footsteps_Stone_06		69856
+	109275559	Ambience_Birds	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Forest_Summer_Sunrise_NearLake_LightWind_Birds_GreatTit_Swan_Woodpecker_FuMa 4_0CD668BD.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Critters\Ambience_Birds		12939024
 	149047421	Ambience_Cave	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\ambience_stoneroom_784F98E1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Cave		4608144
 	155865947	Footsteps_Dirt_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Dirt_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Dirt\Footsteps_Dirt_03		48936
 	194700227	Ambience_Wind_Light	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Wind_Forest_Fienup_001_AA8B491B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Wind\Ambience_Wind_Light		11811452
 	231239467	Footsteps_Sand_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Sand\Footsteps_Sand_04		72096
 	239728135	Footsteps_Grass_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Grass\Footsteps_Grass_05		192096
 	289775055	Footsteps_Stone_02	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Stone\Footsteps_Stone_02		58596
-	338079950	Ambience_Outdoors_Night	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\AMBISONIC_A EXT Late Summer Dusk 03_60C5E7CF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Critters\Ambience_Outdoors_Night		34600560
+	338079950	Ambience_Crickets	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\AMBISONIC_A EXT Late Summer Dusk 03_60C5E7CF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Critters\Ambience_Crickets		34600560
 	356859635	Splash	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\player_splash_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Splash		360096
 	424872928	Footsteps_Sand_02	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Sand\Footsteps_Sand_02		54096
 	445362272	Sculpting_Stone	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Sculpting_Stone_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sculpting\Sculpting_Stone		1440096
@@ -60,9 +68,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	564823022	Snap	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Snap SP_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Snap		16032
 	589509037	Footsteps_Grass_07	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\footsteps_grass_07_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Grass\Footsteps_Grass_07		192096
 	603697385	Footsteps_Stone_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Stone\Footsteps_Stone_03		46700
-	608614675	Ambience_Outdoors_Day	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\SNW_06_Nature_Forest_Birds_Wind_Early Morning_Spring_Distant Sea_Mediterranean_Grece_DE3C9EC0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Critters\Ambience_Outdoors_Day		11868196
 	613335784	Footsteps_Stone_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Stone\Footsteps_Stone_05		68688
-	625904251	Ambience_Rain	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Rain in forest the day_120118_13_69FF4FC0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Rain		12649104
+	625904251	Ambience_Rain	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Rain in forest the day_120118_13_4119AE34.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Rain		12649104
 	652273397	Footsteps_Stone_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Stone\Footsteps_Stone_04		46696
 	723587022	Footsteps_Sand_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Sand\Footsteps_Sand_01		65108
 	747044066	Footsteps_Sand_03	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Sand\Footsteps_Sand_03		72096

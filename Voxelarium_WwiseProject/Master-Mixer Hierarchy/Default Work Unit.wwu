@@ -16,8 +16,15 @@
 									<Custom>
 										<Effect Name="RoomVerb (Custom)" ID="{C5A80540-4CF8-483F-8256-465F32C871C1}" ShortID="159617704" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 											<PropertyList>
-												<Property Name="ERLevel" Type="Real32" Value="-10"/>
-												<Property Name="ERPattern" Type="int32" Value="14"/>
+												<Property Name="Density" Type="Real32" Value="79"/>
+												<Property Name="ERLevel" Type="Real32" Value="-11"/>
+												<Property Name="Filter1Gain" Type="Real32" Value="8"/>
+												<Property Name="Filter2Freq" Type="Real32" Value="740"/>
+												<Property Name="HFDamping" Type="Real32" Value="3.75"/>
+												<Property Name="PreDelay" Type="Real32" Value="57"/>
+												<Property Name="Quality" Type="int32" Value="10"/>
+												<Property Name="ReverbLevel" Type="Real32" Value="-15"/>
+												<Property Name="RoomSize" Type="Real32" Value="29"/>
 											</PropertyList>
 											<ObjectLists>
 												<ObjectList Name="RTPC">
@@ -40,18 +47,18 @@
 																				<PointList>
 																					<Point>
 																						<XPos>0</XPos>
-																						<YPos>0.04149</YPos>
+																						<YPos>0.35891</YPos>
 																						<Flags>5</Flags>
 																						<SegmentShape>Exp1</SegmentShape>
 																					</Point>
 																					<Point>
-																						<XPos>6.18583</XPos>
-																						<YPos>-2.61212</YPos>
+																						<XPos>6.09765</XPos>
+																						<YPos>-1.07948</YPos>
 																						<Flags>0</Flags>
 																						<SegmentShape>Exp1</SegmentShape>
 																					</Point>
 																					<Point>
-																						<XPos>10</XPos>
+																						<XPos>13.85965</XPos>
 																						<YPos>-96.3</YPos>
 																						<Flags>0</Flags>
 																					</Point>
@@ -98,7 +105,7 @@
 																						<SegmentShape>Exp1</SegmentShape>
 																					</Point>
 																					<Point>
-																						<XPos>10</XPos>
+																						<XPos>14.67372</XPos>
 																						<YPos>-96.3</YPos>
 																						<Flags>0</Flags>
 																					</Point>
@@ -123,7 +130,7 @@
 																</PropertyList>
 																<ReferenceList>
 																	<Reference Name="ControlInput">
-																		<ObjectRef Name="BubbleWidth" ID="{CCAE6589-52AA-403F-B114-FACCB0173A68}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																		<ObjectRef Name="BubbleAverage" ID="{DA5210B3-664F-48BC-B0A0-D88E712CA268}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
 																	</Reference>
 																	<Reference Name="Curve">
 																		<Custom>
@@ -138,7 +145,7 @@
 																						<Flags>5</Flags>
 																					</Point>
 																					<Point>
-																						<XPos>10</XPos>
+																						<XPos>14.54145</XPos>
 																						<YPos>-100</YPos>
 																						<Flags>0</Flags>
 																					</Point>
@@ -174,17 +181,17 @@
 																				<PointList>
 																					<Point>
 																						<XPos>0</XPos>
-																						<YPos>1.20000004768372</YPos>
+																						<YPos>0.46486</YPos>
 																						<Flags>5</Flags>
 																					</Point>
 																					<Point>
-																						<XPos>10</XPos>
-																						<YPos>3.4729</YPos>
+																						<XPos>19.86842</XPos>
+																						<YPos>4.08247</YPos>
 																						<Flags>0</Flags>
 																					</Point>
 																					<Point>
 																						<XPos>50</XPos>
-																						<YPos>3.4729</YPos>
+																						<YPos>3.98869</YPos>
 																						<Flags>37</Flags>
 																					</Point>
 																				</PointList>
@@ -214,22 +221,57 @@
 																				<PointList>
 																					<Point>
 																						<XPos>0</XPos>
-																						<YPos>-7E-05</YPos>
+																						<YPos>-0.47831</YPos>
 																						<Flags>5</Flags>
 																					</Point>
 																					<Point>
-																						<XPos>6.88437</XPos>
-																						<YPos>-2.87671</YPos>
+																						<XPos>9.83852</XPos>
+																						<YPos>-2.65575</YPos>
 																						<Flags>0</Flags>
 																					</Point>
 																					<Point>
-																						<XPos>10</XPos>
+																						<XPos>14.82456</XPos>
 																						<YPos>-96.3</YPos>
 																						<Flags>0</Flags>
 																					</Point>
 																					<Point>
 																						<XPos>50</XPos>
 																						<YPos>-96.3</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{B516760D-4F81-4774-8A43-8779F1A2623C}" ShortID="363668926">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="PreDelay"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="BubbleWidth" ID="{CCAE6589-52AA-403F-B114-FACCB0173A68}" WorkUnitID="{5C2EF20F-6167-4DBF-9476-C92F56C00226}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{973A98F7-E0C6-459F-B1F4-C0B914C021AE}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="1"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>34.56938</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>50</XPos>
+																						<YPos>254.66507</YPos>
 																						<Flags>37</Flags>
 																					</Point>
 																				</PointList>
@@ -247,6 +289,22 @@
 								</Reference>
 							</ReferenceList>
 						</AuxBus>
+						<Bus Name="Ambisonics" ID="{06359B2B-85B5-4AC9-9D57-A1E9D1029E01}">
+							<PropertyList>
+								<Property Name="BusChannelConfig" Type="int32">
+									<ValueList>
+										<Value>516</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom>
+										<Effect Name="Resonance Audio Renderer (Custom)" ID="{7BEB42AA-DB6A-4CAC-9773-D8125CA86C6A}" ShortID="575674815" PluginName="Resonance Audio Renderer" CompanyID="272" PluginID="100" PluginType="3"/>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

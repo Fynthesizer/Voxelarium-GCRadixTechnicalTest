@@ -483,7 +483,6 @@ public class Chunk : MonoBehaviour
     {
         Vector3 position = new Vector3(x, level + yOffset, z) + transform.position;
         GameObject newObject;
-        print(position);
         newObject = Instantiate(butterfly, position, Quaternion.identity, objects.transform);
 
     }

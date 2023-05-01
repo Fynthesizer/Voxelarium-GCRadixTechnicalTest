@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PluginInfo Platform="Mac" BasePlatform="Mac">
 	<PluginLibs>
+		<PluginLib LibName="Resonance Audio Renderer" LibId="6557955" Type="Effect" DLL="ResonanceAudio" StaticLib="ResonanceAudioFX"/>
 		<PluginLib LibName="Wwise RoomVerb" LibId="7733251" Type="Effect" DLL="AkRoomVerb" StaticLib="AkRoomVerbFX"/>
 		<PluginLib LibName="System" LibId="11403271" Type="AudioDevice"/>
 		<PluginLib LibName="No Output" LibId="11862023" Type="AudioDevice"/>
 		<PluginLib LibName="Wwise Audio Input" LibId="13107202" Type="Source" DLL="AkAudioInput" StaticLib="AkAudioInputSource"/>
 	</PluginLibs>
-	<FileHash>{5322D4F6-CCFF-12F3-C627-C836592BA70D}</FileHash>
+	<FileHash>{3F92238A-49F1-F46C-C01E-81CABB854C69}</FileHash>
 </PluginInfo>

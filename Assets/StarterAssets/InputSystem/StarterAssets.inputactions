@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleDayNight",
+                    "type": "Button",
+                    "id": "4e5a3d4c-1273-47f5-8ab2-751950443a32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -475,6 +484,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Snap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb90e3b6-a928-4ddf-93aa-55cdc934ae57",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleDayNight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

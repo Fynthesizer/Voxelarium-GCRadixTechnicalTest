@@ -86,20 +86,6 @@
                 },
                 "m_SlotId": 4
             }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "525d75ed399246729db68e85a50ba424"
-                },
-                "m_SlotId": 3
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "a1577f1e96aa453eaa5527775f830085"
-                },
-                "m_SlotId": 3
-            }
         }
     ],
     "m_VertexContext": {
@@ -300,9 +286,6 @@
         },
         {
             "m_Id": "299838772c1c40b2a5658806ade78a3f"
-        },
-        {
-            "m_Id": "977dc708fcf4405f8d7f5d10a89e323a"
         }
     ],
     "synonyms": [
@@ -383,21 +366,6 @@
     "m_Entries": [],
     "m_Value": 1,
     "m_IsEditable": true
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "977dc708fcf4405f8d7f5d10a89e323a",
-    "m_Id": 3,
-    "m_DisplayName": "ShadowAtten",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "ShadowAtten",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
 }
 
 {

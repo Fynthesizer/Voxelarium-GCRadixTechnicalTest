@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class WeatherManager : MonoBehaviour
@@ -55,6 +56,11 @@ public class WeatherManager : MonoBehaviour
 
     public AnimationCurve temperatureOverHeight;
 
+    [Header("Input")]
+    [SerializeField] private InputActionAsset _inputActions;
+
+
+
     public void Setup()
     {
         seed = GameManager.gm.worldSettings.seed;
@@ -90,6 +96,8 @@ public class WeatherManager : MonoBehaviour
         UpdateLights();
 
         setup = true;
+
+        _inputActions.FindAction("ToggleDayNight").performed += ToggleDayNight;
     }
 
     void SetWind(Vector2 direction, float strength)
@@ -100,6 +108,17 @@ public class WeatherManager : MonoBehaviour
         wind.transform.LookAt(windDirection);
         wind.windMain = strength;
         //FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Wind", strength);
+    }
+
+    public void ToggleDayNight(InputAction.CallbackContext context)
+    {
+        time += 12.0f;
+        //timeOfDay = time % 24;
+        //hour = Mathf.FloorToInt(timeOfDay);
+        //OnHour();
+        //UpdateScene();
+        //UpdateCelestialBodies();
+        
     }
 
     void SetCloudiness(float value)
@@ -142,7 +161,6 @@ public class WeatherManager : MonoBehaviour
         sky.rotation = rotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (setup)
@@ -207,16 +225,21 @@ public class WeatherManager : MonoBehaviour
             }
 
             //Function for hourly events
-            if (Mathf.FloorToInt(time) != hour)
+            if (Mathf.FloorToInt(timeOfDay) != hour)
             {
                 OnHour();
             }
+
+            UpdateScene();
+            UpdateLights();
         }
+
+        
     }
 
     void UpdateLights()
     {
-        if(hour <= 6 || hour > 18) //Night time
+        if (hour <= 6 || hour > 18) //Night time
         {
             moonLight.intensity = moonIntensity;
             sunLight.intensity = 0f;
@@ -236,18 +259,23 @@ public class WeatherManager : MonoBehaviour
 
     void OnHour()
     {
-        hour = Mathf.FloorToInt(time);
+        hour = Mathf.FloorToInt(timeOfDay);
+        UpdateWeather();
 
+        //if (hour == 18) StartCoroutine(Sunset(0.1f));
+        //else if (hour == 6) StartCoroutine(Sunrise(0.1f));
+        //Update reflection probe
+        //StartCoroutine(BlendProbe());
+    }
+
+    private void UpdateWeather()
+    {
         //Sample noise to decide if it should be raining
         float rainSample = Mathf.PerlinNoise(time / 10f, seed);
         if (rainSample < rainChance && !raining) SetRain(true);
         else if (rainSample > rainChance && raining) SetRain(false);
-        SetCloudiness(Helpers.Map(rainSample, 0f, 1f, 0f, 2f));
 
-        if (hour == 18f) StartCoroutine(Sunset(0.1f));
-        else if (hour == 6f) StartCoroutine(Sunrise(0.1f));
-        //Update reflection probe
-        //StartCoroutine(BlendProbe());
+        SetCloudiness(Helpers.Map(rainSample, 0f, 1f, 0f, 2f));
     }
 
     public void OnWorldLoad()
@@ -288,13 +316,9 @@ public class WeatherManager : MonoBehaviour
             rainValue = Mathf.Lerp(startValue, targetValue, timeElapsed / rainTransitionLength);
             timeElapsed += Time.deltaTime;
 
-            UpdateScene();
-
             yield return null;
         }
         rainValue = targetValue;
-
-        UpdateScene();
     }
 
     IEnumerator Sunset(float duration)
@@ -348,9 +372,9 @@ public class WeatherManager : MonoBehaviour
         ParticleSystem.EmissionModule rainEmission = rainSystem.emission;
 
         SetFog(Map(rainValue, 0f, 1f, 0.002f, 0.005f));
-        //ambienceLayers[1].volume = rainValue;
         sunIntensity = Map(rainValue, 0f, 1f, 1f, 0.5f);
         moonIntensity = Map(rainValue, 0f, 1f, 0.4f, 0.2f);
+
         Shader.SetGlobalFloat("_Raining", rainValue);
         rainEmission.rateOverTime = Map(rainValue, 0f, 1f, 0, 2500);
         if (indoors) rainEmission.enabled = false;

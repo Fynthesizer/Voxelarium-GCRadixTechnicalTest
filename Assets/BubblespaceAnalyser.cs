@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using AK.Wwise;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor.Search;
-using System.Collections.Concurrent;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 
 public class BubblespaceAnalyser : MonoBehaviour
 {
@@ -90,7 +85,6 @@ public class BubblespaceAnalyser : MonoBehaviour
     {
         for (int i = 0; i < _hitPoints.Length; i++)
         {
-            print(_hitPoints[i]);
             Matrix4x4 transformationMatrix = Matrix4x4.Translate(_hitPoints[i]);
             transformationMatrix *= Matrix4x4.Scale(new Vector3(_debugHitSize, _debugHitSize, _debugHitSize));
             Graphics.DrawMesh(_debugHitMesh, transformationMatrix, _debugHitMaterial, 0);

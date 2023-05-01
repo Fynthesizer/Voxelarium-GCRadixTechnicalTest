@@ -78,6 +78,7 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID AMBISONICS = 2903397179U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
     } // namespace BUSSES
 

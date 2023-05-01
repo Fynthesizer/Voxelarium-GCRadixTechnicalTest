@@ -86,16 +86,6 @@ public class FirstPersonController : MonoBehaviour
     private GameManager gameManager;
     private UIManager UIManager;
 
-    Dictionary<Voxel.Material, int> materialIndexDictionary = new Dictionary<Voxel.Material, int>()
-        {
-            { Voxel.Material.Grass, 0 },
-            { Voxel.Material.Dirt, 1 },
-            { Voxel.Material.Stone, 2 },
-            { Voxel.Material.Sand, 3 },
-            { Voxel.Material.Snow, 1 },
-        };
-
-
     private void Awake()
     {
         // get a reference to our main camera

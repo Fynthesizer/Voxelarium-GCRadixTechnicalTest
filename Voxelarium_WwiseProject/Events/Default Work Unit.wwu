@@ -87,6 +87,53 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Splash" ID="{C01434EA-AB4E-4EBE-ACE7-63D7C23FC3D7}">
+					<ChildrenList>
+						<Action Name="" ID="{84AC473F-9F94-464E-A710-FEADA6160832}" ShortID="405005147">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Splash" ID="{8A53991A-C99D-479C-97C9-6FC5DBD34912}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AudioInput" ID="{FB1652DE-8C6E-48AC-9860-63965FC8CF92}">
+					<ChildrenList>
+						<Action Name="" ID="{65A07FBA-7AD7-4225-8E31-05A6ACA80D4A}" ShortID="538374210">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AudioInput" ID="{0185C0DE-B966-4145-9682-2375189EF6E2}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_AudioInput" ID="{724F6C30-9EEB-4804-9803-8EB46B31AD8B}">
+					<ChildrenList>
+						<Action Name="" ID="{A7D0E8E8-AD76-49F3-8282-ED87D38B54E2}" ShortID="150793676">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AudioInput" ID="{0185C0DE-B966-4145-9682-2375189EF6E2}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Snap" ID="{EF311C7C-FE89-4667-AD96-518ED2B1C518}">
+					<ChildrenList>
+						<Action Name="" ID="{986C7AA1-1CD9-4BEB-A144-7BF75DABEBC5}" ShortID="745762255">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Snap" ID="{07EDD515-A3E2-45EA-90FE-1AFCFFB9CB1A}" WorkUnitID="{41C150A6-9A67-4057-85D0-1913C69544C9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

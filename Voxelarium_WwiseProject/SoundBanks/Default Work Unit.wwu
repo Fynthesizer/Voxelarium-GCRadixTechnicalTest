@@ -6,6 +6,7 @@
 				<SoundBank Name="Main" ID="{B94C5AF2-8954-484B-8F28-A930B8BEB136}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Default Work Unit" ID="{5281C4C3-21A5-412D-8EB5-9DF8C7141AEC}" WorkUnitID="{5281C4C3-21A5-412D-8EB5-9DF8C7141AEC}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Ambisonics" ID="{06359B2B-85B5-4AC9-9D57-A1E9D1029E01}" WorkUnitID="{4217798B-823F-4ADE-B216-6D6F5EF63B57}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
