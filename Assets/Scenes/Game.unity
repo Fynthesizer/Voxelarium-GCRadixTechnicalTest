@@ -23302,11 +23302,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050593595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.20000005, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6252016713161758821}
+  m_Father: {fileID: 1404678375247346563}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2050593597
@@ -23325,9 +23325,9 @@ MonoBehaviour:
   _bufferSize: 4
   _horizontalSmoothingFrames: 16
   _verticalSmoothingFrames: 4
-  _rotationPhases: 12
+  _rotationPhases: 18
   _maxRaycastDistance: 30
-  _verticalRayHorizontalOffset: 1
+  _verticalRaySpacing: 1
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -23342,6 +23342,10 @@ MonoBehaviour:
     Absorption: 0.5
   - Material: 8
     Absorption: 0.5
+  - Material: 32
+    Absorption: 0
+  _spatialDefinitions: {fileID: 11400000, guid: e7f4ccb35fc7b5b489c8b49eeb51e307,
+    type: 2}
   _drawDebug: 1
   _debugHitMesh: {fileID: 289301614986012343, guid: d82a9316a30f6a0469308aa5237093a7,
     type: 3}
@@ -23367,9 +23371,15 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 3dd6d04f8f8a26e4c98498af8a6002c5,
       type: 2}
+  _outdoorExposureRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8ec1d52a2e39d0d45ae23325a996cb78,
+      type: 2}
   SmoothedBubbleWidth: 0
   SmoothedBubbleHeight: 0
   SmoothedBubbleAbsorption: 0
+  SmoothedOutdoorExposure: 0
 --- !u!1 &2061608314
 GameObject:
   m_ObjectHideFlags: 0
@@ -23580,7 +23590,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2050593596}
   m_Father: {fileID: 6252016713161758821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24006,7 +24017,6 @@ Transform:
   - {fileID: 1404678375247346563}
   - {fileID: 6972806292809651914}
   - {fileID: 778307743}
-  - {fileID: 2050593596}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -38,6 +38,7 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	596440120	BubbleAverage			\Default Work Unit\Bubblespace\BubbleAverage	
 	2043403999	Rain			\Default Work Unit\Rain	
 	3158975812	WindStrength			\Default Work Unit\WindStrength	
+	3433456050	OutdoorResemblance			\Default Work Unit\Bubblespace\OutdoorResemblance	
 	3729505769	TimeOfDay			\Default Work Unit\TimeOfDay	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
@@ -82,7 +83,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	800221165	Footsteps_Water_5	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 15_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Water\Footsteps_Water_5		75664
 	800834350	Footsteps_Sand_05	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Land\Footsteps_Sand\Footsteps_Sand_05		72096
 	847887956	Footsteps_Grass_04	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Land\Footsteps_Grass\Footsteps_Grass_04		192096
-	886432167	Ambience_Crickets	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\AMBISONIC_A EXT Late Summer Dusk 03 5_BFEA5E12.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Critters\Ambience_Crickets		32870536
+	886432167	Ambience_Crickets	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\AMBISONIC_A EXT Late Summer Dusk 03 5_D95B4FF7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience_Outdoor\Ambience_Critters\Ambience_Crickets		32870536
 	935958708	Footsteps_Dirt_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Dirt_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Land\Footsteps_Dirt\Footsteps_Dirt_01		49992
 	966319581	Footsteps_Grass_01	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Land\Footsteps_Grass\Footsteps_Grass_01		192096
 	1058756355	Footsteps_Grass_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Land\Footsteps_Grass\Footsteps_Grass_06		192096

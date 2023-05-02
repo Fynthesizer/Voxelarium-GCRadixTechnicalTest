@@ -66,9 +66,14 @@ namespace AK
         static const AkUniqueID BUBBLEAVERAGE = 596440120U;
         static const AkUniqueID BUBBLEHEIGHT = 744577782U;
         static const AkUniqueID BUBBLEWIDTH = 2967072453U;
+        static const AkUniqueID CAVERESEMBLANCE = 2104179333U;
+        static const AkUniqueID DITCHRESEMBLANCE = 324212552U;
+        static const AkUniqueID OUTDOORRESEMBLANCE = 3433456050U;
         static const AkUniqueID PLAYERSUBMERSION = 363247939U;
         static const AkUniqueID RAIN = 2043403999U;
+        static const AkUniqueID SMALLCAVERESEMBLANCE = 2117372220U;
         static const AkUniqueID TIMEOFDAY = 3729505769U;
+        static const AkUniqueID TUNNELRESEMBLANCE = 2636984294U;
         static const AkUniqueID WINDSTRENGTH = 3158975812U;
     } // namespace GAME_PARAMETERS
 
@@ -87,6 +92,10 @@ namespace AK
     namespace AUX_BUSSES
     {
         static const AkUniqueID REVERB = 348963605U;
+        static const AkUniqueID REVERB_CAVERN = 2097050643U;
+        static const AkUniqueID REVERB_DITCH = 958940558U;
+        static const AkUniqueID REVERB_SMALLCAVERN = 66377470U;
+        static const AkUniqueID REVERB_TUNNEL = 2261546958U;
     } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES

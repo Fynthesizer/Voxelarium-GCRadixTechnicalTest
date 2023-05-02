@@ -9,14 +9,18 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{C48B946C-526F-A1E7-EF3F-83EB77F0F081}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{CF0A822E-4065-B922-B5FF-1560F3787BEE}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
 				<Custom>
 					<Plugin Id="159617704" Name="RoomVerb (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="214196487" Name="Tunnel" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="282412213" Name="Ditch" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="308432466" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="575674815" Name="Resonance Audio Renderer (Custom)" LibName="Resonance Audio Renderer" LibId="6557955"/>
+					<Plugin Id="645945130" Name="SmallCavern" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="1046479791" Name="Room_Medium_Tiled (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
@@ -34,6 +38,13 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 			<AuxBusses>
+				<AuxBus Id="66377470" Name="Reverb_SmallCavern">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="645945130"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="348963605" Name="Reverb">
 					<PluginRefs>
 						<Custom>
@@ -41,15 +52,47 @@
 							<PluginRef Id="308432466"/>
 						</Custom>
 					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="66377470" Name="Reverb_SmallCavern"/>
+						<AuxBusRef Id="958940558" Name="Reverb_Ditch"/>
+						<AuxBusRef Id="2097050643" Name="Reverb_Cavern"/>
+						<AuxBusRef Id="2261546958" Name="Reverb_Tunnel"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="958940558" Name="Reverb_Ditch">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="282412213"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="2097050643" Name="Reverb_Cavern">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="1046479791"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="2261546958" Name="Reverb_Tunnel">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="214196487"/>
+						</Custom>
+					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
 			<GameParameters>
+				<GameParameter Id="324212552" Name="DitchResemblance"/>
 				<GameParameter Id="363247939" Name="PlayerSubmersion"/>
 				<GameParameter Id="596440120" Name="BubbleAverage"/>
 				<GameParameter Id="744577782" Name="BubbleHeight"/>
 				<GameParameter Id="2043403999" Name="Rain"/>
+				<GameParameter Id="2104179333" Name="CaveResemblance"/>
+				<GameParameter Id="2117372220" Name="SmallCaveResemblance"/>
+				<GameParameter Id="2636984294" Name="TunnelResemblance"/>
 				<GameParameter Id="2967072453" Name="BubbleWidth"/>
 				<GameParameter Id="3158975812" Name="WindStrength"/>
+				<GameParameter Id="3433456050" Name="OutdoorResemblance"/>
 				<GameParameter Id="3725968720" Name="BubbleAbsorption"/>
 				<GameParameter Id="3729505769" Name="TimeOfDay"/>
 			</GameParameters>
@@ -74,7 +117,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{99038641-3CFB-3A8D-FE8B-1BBB887E390B}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{AC7DB88D-CA83-5070-27B9-874CA55B689D}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -204,7 +247,7 @@
 				</File>
 				<File Id="886432167" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMBISONIC_A EXT Late Summer Dusk 03 5.wav</ShortName>
-					<CachePath>SFX/AMBISONIC_A EXT Late Summer Dusk 03 5_BFEA5E12.wem</CachePath>
+					<CachePath>SFX/AMBISONIC_A EXT Late Summer Dusk 03 5_D95B4FF7.wem</CachePath>
 				</File>
 				<File Id="935958708" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Footsteps_Dirt_01.wav</ShortName>
@@ -242,7 +285,7 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="790324878" Name="Play_Ambience_Outdoors" DurationType="Infinite">
+				<Event Id="790324878" Name="Play_Ambience_Outdoors" MaxAttenuation="100" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="109275559"/>
 						<MediaRef Id="886432167"/>
@@ -251,7 +294,7 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="2378670719" Name="Play_Ambience_Rain" DurationType="Infinite">
+				<Event Id="2378670719" Name="Play_Ambience_Rain" MaxAttenuation="100" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="625904251"/>
 					</MediaRefs>
@@ -259,7 +302,7 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="1913801107" Name="Play_Ambience_Wind" DurationType="Infinite">
+				<Event Id="1913801107" Name="Play_Ambience_Wind" MaxAttenuation="100" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="194700227"/>
 					</MediaRefs>
@@ -388,6 +431,7 @@
 				<GameParameter Id="596440120" Name="BubbleAverage"/>
 				<GameParameter Id="2043403999" Name="Rain"/>
 				<GameParameter Id="3158975812" Name="WindStrength"/>
+				<GameParameter Id="3433456050" Name="OutdoorResemblance"/>
 				<GameParameter Id="3729505769" Name="TimeOfDay"/>
 			</GameParameters>
 			<SwitchGroups>
@@ -403,5 +447,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{5BDBBB71-E19D-93F6-06D0-E1057B2850A5}</FileHash>
+	<FileHash>{B55E1F6E-8CCE-78E3-8C41-A80B5CF4D7C3}</FileHash>
 </SoundBanksInfo>

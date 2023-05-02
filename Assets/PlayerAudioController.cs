@@ -59,7 +59,6 @@ public class PlayerAudioController : MonoBehaviour
         if (_lastStepDist > _footstepRate && (_firstPersonController.Grounded || _firstPersonController.Submerged))
         {
             SetGroundMaterial(_firstPersonController.GetGroundMaterial());
-            print(_firstPersonController.Submerged);
             _submersionRTPC.SetValue(gameObject, _firstPersonController.Submerged ? 1f : 0f);
             PlayFootstep();
             _lastStepDist = 0f;

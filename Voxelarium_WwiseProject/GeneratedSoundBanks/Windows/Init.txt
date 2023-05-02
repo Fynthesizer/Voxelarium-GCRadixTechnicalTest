@@ -7,8 +7,12 @@ State	ID	Name	State Group			Notes
 	2195636714	Dirt	SculptMaterial			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
+	324212552	DitchResemblance			\Default Work Unit\Bubblespace\DitchResemblance	
 	596440120	BubbleAverage			\Default Work Unit\Bubblespace\BubbleAverage	
 	744577782	BubbleHeight			\Default Work Unit\Bubblespace\BubbleHeight	
+	2104179333	CaveResemblance			\Default Work Unit\Bubblespace\CaveResemblance	
+	2117372220	SmallCaveResemblance			\Default Work Unit\Bubblespace\SmallCaveResemblance	
+	2636984294	TunnelResemblance			\Default Work Unit\Bubblespace\TunnelResemblance	
 	2967072453	BubbleWidth			\Default Work Unit\Bubblespace\BubbleWidth	
 	3725968720	BubbleAbsorption			\Default Work Unit\Bubblespace\BubbleAbsorption	
 
@@ -17,12 +21,20 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	66377470	Reverb_SmallCavern			\Default Work Unit\Master Audio Bus\Reverb_SmallCavern	
 	348963605	Reverb			\Default Work Unit\Master Audio Bus\Reverb	
+	958940558	Reverb_Ditch			\Default Work Unit\Master Audio Bus\Reverb_Ditch	
+	2097050643	Reverb_Cavern			\Default Work Unit\Master Audio Bus\Reverb_Cavern	
+	2261546958	Reverb_Tunnel			\Default Work Unit\Master Audio Bus\Reverb_Tunnel	
 
 Effect plug-ins	ID	Name	Type				Notes
 	159617704	RoomVerb (Custom)	Wwise RoomVerb			
+	214196487	Tunnel	Wwise RoomVerb			
+	282412213	Ditch	Wwise RoomVerb			
 	308432466	Delay (Custom)	Wwise Delay			
 	575674815	Resonance Audio Renderer (Custom)	Resonance Audio Renderer			
+	645945130	SmallCavern	Wwise RoomVerb			
+	1046479791	Room_Medium_Tiled (Custom)	Wwise RoomVerb			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
