@@ -49,8 +49,8 @@
 						</GameParameter>
 						<GameParameter Name="CaveResemblance" ID="{A284117A-23F9-405C-95D7-0629BDCAD6EA}">
 							<PropertyList>
-								<Property Name="FilterTimeDown" Type="Real64" Value="1"/>
-								<Property Name="FilterTimeUp" Type="Real64" Value="1"/>
+								<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+								<Property Name="FilterTimeUp" Type="Real64" Value="0.5"/>
 								<Property Name="InitialValue" Type="Real64" Value="0"/>
 								<Property Name="Max" Type="Real64" Value="1"/>
 								<Property Name="RTPCRamping" Type="int16" Value="2"/>
@@ -58,8 +58,8 @@
 						</GameParameter>
 						<GameParameter Name="TunnelResemblance" ID="{D4FADCEA-C306-4742-93A8-9B8445479656}">
 							<PropertyList>
-								<Property Name="FilterTimeDown" Type="Real64" Value="1"/>
-								<Property Name="FilterTimeUp" Type="Real64" Value="1"/>
+								<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+								<Property Name="FilterTimeUp" Type="Real64" Value="0.5"/>
 								<Property Name="InitialValue" Type="Real64" Value="0"/>
 								<Property Name="Max" Type="Real64" Value="1"/>
 								<Property Name="RTPCRamping" Type="int16" Value="2"/>
@@ -67,8 +67,8 @@
 						</GameParameter>
 						<GameParameter Name="DitchResemblance" ID="{8475011C-398E-445D-8772-BD555F83168C}">
 							<PropertyList>
-								<Property Name="FilterTimeDown" Type="Real64" Value="1"/>
-								<Property Name="FilterTimeUp" Type="Real64" Value="1"/>
+								<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+								<Property Name="FilterTimeUp" Type="Real64" Value="0.5"/>
 								<Property Name="InitialValue" Type="Real64" Value="0"/>
 								<Property Name="Max" Type="Real64" Value="1"/>
 								<Property Name="RTPCRamping" Type="int16" Value="2"/>
@@ -76,8 +76,8 @@
 						</GameParameter>
 						<GameParameter Name="OutdoorResemblance" ID="{A2DAE97B-008E-4105-B4AD-63EAEEC03CCE}">
 							<PropertyList>
-								<Property Name="FilterTimeDown" Type="Real64" Value="1"/>
-								<Property Name="FilterTimeUp" Type="Real64" Value="1"/>
+								<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+								<Property Name="FilterTimeUp" Type="Real64" Value="0.5"/>
 								<Property Name="InitialValue" Type="Real64" Value="0"/>
 								<Property Name="Max" Type="Real64" Value="1"/>
 								<Property Name="RTPCRamping" Type="int16" Value="2"/>
@@ -85,8 +85,8 @@
 						</GameParameter>
 						<GameParameter Name="SmallCaveResemblance" ID="{16B73343-A4DB-49A0-98C1-4034E6D50855}">
 							<PropertyList>
-								<Property Name="FilterTimeDown" Type="Real64" Value="1"/>
-								<Property Name="FilterTimeUp" Type="Real64" Value="1"/>
+								<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+								<Property Name="FilterTimeUp" Type="Real64" Value="0.5"/>
 								<Property Name="InitialValue" Type="Real64" Value="0"/>
 								<Property Name="Max" Type="Real64" Value="1"/>
 								<Property Name="RTPCRamping" Type="int16" Value="2"/>

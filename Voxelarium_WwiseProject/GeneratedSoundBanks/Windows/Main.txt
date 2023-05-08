@@ -48,9 +48,6 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 Effect plug-ins	ID	Name	Type				Notes
 	575674815	Resonance Audio Renderer (Custom)	Resonance Audio Renderer			
 
-Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
-	113025464	Audio Input	Wwise Audio Input		\Actor-Mixer Hierarchy\Default Work Unit\AudioInput\Audio Input	
-
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	60635659	Footsteps_Stone_06	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Land\Footsteps_Stone\Footsteps_Stone_06		69856
 	82097394	Footsteps_Water_4	K:\Unity Projects\Voxelarium\Voxelarium_WwiseProject\.cache\Windows\SFX\Footsteps, Human, Water, Walk, Light, Splahes, Very Thin SND62085 14_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Footsteps\Footsteps_Water\Footsteps_Water_4		69930

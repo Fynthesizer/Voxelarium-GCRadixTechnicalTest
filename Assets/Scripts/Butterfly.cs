@@ -49,7 +49,7 @@ public class Butterfly : MonoBehaviour
     IEnumerator CheckTime()
     {
         while (true) { 
-            float time = GameManager.gm.weatherManager.time;
+            float time = GameManager.Instance.weatherManager.time;
 
             if (time < 6 || time > 18) SetType(1);
             else SetType(0);

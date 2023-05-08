@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{2F064A08-4EF8-3C4A-06AC-7D885F69615E}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F43F6ECF-7F9B-3028-822D-4EEDFDB76617}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -28,6 +28,7 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="2469860632" Name="Spaces"/>
 				<Bus Id="2903397179" Name="Ambisonics">
 					<PluginRefs>
 						<Custom>
@@ -117,7 +118,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{AC7DB88D-CA83-5070-27B9-874CA55B689D}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{F413DE61-BE1B-5A47-26DF-104C5C62F5B4}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -272,7 +273,6 @@
 			</Media>
 			<Plugins>
 				<Custom>
-					<Plugin Id="113025464" Name="Audio Input" LibName="Wwise Audio Input" LibId="13107202"/>
 					<Plugin Id="575674815" Name="Resonance Audio Renderer (Custom)" LibName="Resonance Audio Renderer" LibId="6557955"/>
 				</Custom>
 			</Plugins>
@@ -285,7 +285,7 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="790324878" Name="Play_Ambience_Outdoors" MaxAttenuation="100" DurationType="Infinite">
+				<Event Id="790324878" Name="Play_Ambience_Outdoors" MaxAttenuation="50" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="109275559"/>
 						<MediaRef Id="886432167"/>
@@ -294,7 +294,7 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="2378670719" Name="Play_Ambience_Rain" MaxAttenuation="100" DurationType="Infinite">
+				<Event Id="2378670719" Name="Play_Ambience_Rain" MaxAttenuation="50" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="625904251"/>
 					</MediaRefs>
@@ -302,7 +302,7 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="1913801107" Name="Play_Ambience_Wind" MaxAttenuation="100" DurationType="Infinite">
+				<Event Id="1913801107" Name="Play_Ambience_Wind" MaxAttenuation="50" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="194700227"/>
 					</MediaRefs>
@@ -310,17 +310,8 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="4015255420" Name="Play_AudioInput" DurationType="Unknown">
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="113025464"/>
-						</Custom>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</Event>
-				<Event Id="3854155799" Name="Play_Footsteps" DurationType="OneShot" DurationMin="0.7274375" DurationMax="1.0640209">
+				<Event Id="4015255420" Name="Play_AudioInput" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3854155799" Name="Play_Footsteps" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.7274375" DurationMax="1.0640209">
 					<MediaRefs>
 						<MediaRef Id="82097394"/>
 						<MediaRef Id="110041541"/>
@@ -447,5 +438,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{75154823-983D-2C1B-D2BE-EE2B49EF0BFF}</FileHash>
+	<FileHash>{04AFBDC7-1F5A-E4DC-A1F4-655820AF5883}</FileHash>
 </SoundBanksInfo>

@@ -12,27 +12,28 @@ public class GameManager : MonoBehaviour
 {
     public WorldSettings worldSettings;
 
-    public static GameManager gm;
+    public static GameManager Instance;
     public WeatherManager weatherManager;
     public World world;
     public UIManager ui;
 
     GameObject player;
 
-    public ItemDatabase itemDatabase;
-
     public int seed = 10;
     public int size = 5;
 
     public float maxSteepness = 5f;
 
+    public delegate void WorldLoadedHandler();
+    public event WorldLoadedHandler WorldLoaded;
+
     private void Awake()
     {
-        if (gm == null) { 
+        if (Instance == null) { 
             DontDestroyOnLoad(gameObject);
-            gm = this;
+            Instance = this;
         }
-        else if (gm != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -72,13 +73,17 @@ public class GameManager : MonoBehaviour
 
     public void OnWorldLoad()
     {
-        Vector3 startPos = FindSpawnLocation(Vector3.zero, world.preloadSize * world.preloadSize);
-        player.transform.position = startPos + Vector3.up;
-
         GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<CreateMinimap>().OnWorldLoad();
         weatherManager.OnWorldLoad();
         ui.OnWorldLoad();
         player.GetComponent<FirstPersonController>().enabled = true;
+        WorldLoaded.Invoke();
+    }
+
+    public void SpawnPlayer(Vector3 position)
+    {
+        player.transform.position = position + Vector3.up;
+        OnWorldLoad();
     }
 
     IEnumerator LoadWorld()
@@ -112,21 +117,6 @@ public class GameManager : MonoBehaviour
         worldSettings = settings;
         size = 25;
         StartCoroutine(LoadWorld());
-    }
-
-    public static Item GetItemByID(string ID)
-    {
-        Item item = gm.itemDatabase.items.FirstOrDefault(i => i.itemID == ID);
-        if (item != null) return item;
-        else
-        {
-            Debug.LogError("Couldn't find item with specified ID");
-            return null;
-        }
-    }
-    public static Item GetItemByName(string name)
-    {
-        return gm.itemDatabase.items.FirstOrDefault(i => i.itemName == name);
     }
 }
 

@@ -30,7 +30,6 @@ public class Chunk : MonoBehaviour
     public float voxelSize = 2;
 
     public Voxel[] voxels;
-    public StructureVoxel[,,] structureVoxels;
 
     //List<GameObject> meshes = new List<GameObject>();
 
@@ -78,12 +77,10 @@ public class Chunk : MonoBehaviour
     {
         world = transform.parent.gameObject.GetComponent<World>();
         this.voxels = voxels;
-        structureVoxels = new StructureVoxel[width, height, length];
         chunkBounds = new Bounds(new Vector3(transform.position.x + ((width * voxelSize) / 2), transform.position.y + ((height * voxelSize) / 2), transform.position.z + ((length * voxelSize) / 2)),
             new Vector3(width * voxelSize, height * voxelSize, length * voxelSize));
 
         GenerateFertilityMap();
-        //SetupMaterials();
 
         //Create mesh
         Mesh mesh = new Mesh();
@@ -149,38 +146,6 @@ public class Chunk : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void PlacePart(Vector3 position, PartType type)
-    {
-        Vector3Int gridPos = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.RoundToInt(position.y), Mathf.FloorToInt(position.z));
-        gridPos.Clamp(Vector3Int.zero, new Vector3Int(width, height, length));
-        switch(type)
-        {
-            case PartType.Floor:
-                if(!structureVoxels[gridPos.x, gridPos.y, gridPos.z].floor) { 
-                    structureVoxels[gridPos.x, gridPos.y, gridPos.z].floor = true;
-                    Instantiate(floor, (transform.position + gridPos) + new Vector3(0.5f,0f,0.5f), Quaternion.identity, structures.transform);
-                }
-                break;
-            case PartType.Wall:
-                if (!structureVoxels[gridPos.x, gridPos.y, gridPos.z].westWall)
-                {
-                    structureVoxels[gridPos.x, gridPos.y, gridPos.z].westWall = true;
-                    Instantiate(floor, (transform.position + gridPos) + new Vector3(0.5f, 0f, 0.5f), Quaternion.identity, structures.transform);
-                }
-                break;
-            case PartType.Block:
-                if (!structureVoxels[gridPos.x, gridPos.y, gridPos.z].center)
-                {
-                    structureVoxels[gridPos.x, gridPos.y, gridPos.z].center = true;
-                    Instantiate(floor, (transform.position + gridPos) + new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity, structures.transform);
-                }
-                break;
-            default:
-                break;
-        }
-        
     }
 
     float GetOffset(float v1, float v2)
@@ -320,6 +285,25 @@ public class Chunk : MonoBehaviour
         return voxels[index];
     }
 
+    public bool FindSpawnSurface(out Vector3 position)
+    {
+        for (int x = 0; x < width - 1; x++)
+        {
+            for (int z = 0; z < length - 1; z++)
+            {
+                GetSurface(new Vector2Int(x, z), out float surface, out float steepness);
+                if (surface > 10f)
+                {
+                    position = transform.TransformPoint(new Vector3(x, surface, z));
+                    print(surface);
+                    return true;
+                }
+            }
+        }
+        position = Vector3.zero;
+        return false;
+    }
+
     //Get information about the surface at a given x and z position
     public void GetSurface(Vector2Int pos, out float surface, out float steepness)
     {
@@ -376,8 +360,7 @@ public class Chunk : MonoBehaviour
             for (int z = 0; z < (length * voxelSize) - 1; z++)
             {
                 //Get the surface height and steepness at this position
-                float surface, steepness;
-                GetSurface(new Vector2Int(x, z), out surface, out steepness);
+                GetSurface(new Vector2Int(x, z), out float surface, out float steepness);
 
                 float fx = (x + transform.position.x) / (128);
                 float fz = (z + transform.position.z) / (128);
@@ -611,19 +594,4 @@ public struct Voxel
         this.density = density;
         this.material = material;
     }
-}
-
-public struct StructureVoxel
-{
-    public bool westWall; //Western edge
-    public bool southWall; //Southern edge
-    public bool floor;
-    public bool center;
-}
-
-public enum PartType
-{
-    Wall,
-    Floor,
-    Block
 }

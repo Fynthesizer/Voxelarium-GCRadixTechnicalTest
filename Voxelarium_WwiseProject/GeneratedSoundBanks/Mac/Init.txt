@@ -17,15 +17,16 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3725968720	BubbleAbsorption			\Default Work Unit\Bubblespace\BubbleAbsorption	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	2469860632	Spaces			\Default Work Unit\Master Audio Bus\Spaces	
 	2903397179	Ambisonics			\Default Work Unit\Master Audio Bus\Ambisonics	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
-	66377470	Reverb_SmallCavern			\Default Work Unit\Master Audio Bus\Reverb_SmallCavern	
+	66377470	Reverb_SmallCavern			\Default Work Unit\Master Audio Bus\Spaces\Reverb_SmallCavern	
 	348963605	Reverb			\Default Work Unit\Master Audio Bus\Reverb	
-	958940558	Reverb_Ditch			\Default Work Unit\Master Audio Bus\Reverb_Ditch	
-	2097050643	Reverb_Cavern			\Default Work Unit\Master Audio Bus\Reverb_Cavern	
-	2261546958	Reverb_Tunnel			\Default Work Unit\Master Audio Bus\Reverb_Tunnel	
+	958940558	Reverb_Ditch			\Default Work Unit\Master Audio Bus\Spaces\Reverb_Ditch	
+	2097050643	Reverb_Cavern			\Default Work Unit\Master Audio Bus\Spaces\Reverb_Cavern	
+	2261546958	Reverb_Tunnel			\Default Work Unit\Master Audio Bus\Spaces\Reverb_Tunnel	
 
 Effect plug-ins	ID	Name	Type				Notes
 	159617704	RoomVerb (Custom)	Wwise RoomVerb			

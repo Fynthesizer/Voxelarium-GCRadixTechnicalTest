@@ -81,8 +81,6 @@ public class FirstPersonController : MonoBehaviour
 
     private World world;
 
-    bool alive = true;
-
     private GameManager gameManager;
     private UIManager UIManager;
 
@@ -334,20 +332,6 @@ public class FirstPersonController : MonoBehaviour
         {
             _verticalVelocity += Gravity * Time.deltaTime;
         }
-        /*
-		if (Grounded && !_input.jump)
-        {
-			_verticalVelocity = -2f;
-		}
-		if (Grounded && _input.jump && _jumpTimeoutDelta <= 0.0f)
-		{
-			_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-		}
-
-		if (!Grounded && _input.jump && _verticalVelocity < _terminalVelocity) _verticalVelocity += 20f * Time.deltaTime;
-
-		print(_verticalVelocity);
-		*/
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -384,12 +368,5 @@ public class FirstPersonController : MonoBehaviour
         {
             Submerged = false;
         }
-    }
-
-
-    void Die()
-    {
-        alive = false;
-        print("Dead :(");
     }
 }

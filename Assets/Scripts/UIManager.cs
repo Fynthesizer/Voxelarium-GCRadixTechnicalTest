@@ -15,10 +15,7 @@ public class UIManager : MonoBehaviour
 
     public Text worldSeed;
 
-    public GameObject inventoryUI;
-    public GameObject playerStatsUI;
-
-    private GameObject player;
+    [SerializeField] private GameObject player;
     public GameObject loadScreen;
     private Slider loadBar;
     private Camera cam;
@@ -33,7 +30,6 @@ public class UIManager : MonoBehaviour
 
     public void Setup()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         cam = Camera.main;
 
         minimapCam = GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<Camera>();

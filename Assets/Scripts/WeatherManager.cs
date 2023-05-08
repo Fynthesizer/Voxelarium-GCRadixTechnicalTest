@@ -63,7 +63,7 @@ public class WeatherManager : MonoBehaviour
 
     public void Setup()
     {
-        seed = GameManager.gm.worldSettings.seed;
+        seed = GameManager.Instance.worldSettings.seed;
         wind = transform.Find("WindZone").GetComponent<WindZone>();
 
         hour = Mathf.FloorToInt(time);

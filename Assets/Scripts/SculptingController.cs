@@ -38,8 +38,8 @@ public class SculptingController : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Target");
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        world = GameManager.gm.world;
-        ui = GameManager.gm.ui;
+        world = GameManager.Instance.world;
+        ui = GameManager.Instance.ui;
 
         _inputActions.FindAction("ChangeMaterial").performed += ChangeMaterialPressed;
         CurrentMaterial = _placeableMaterials[_currentMaterialIndex];

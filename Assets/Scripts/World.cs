@@ -44,14 +44,16 @@ public class World : MonoBehaviour
     UIManager UIManager;
     GameManager gameManager;
 
-    MarchingData marchingData;
+    private bool playerSpawned = false;
+
+    public delegate void TerrainChangedHandler();
+    public event TerrainChangedHandler TerrainChanged;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         UIManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        marchingData = new MarchingData(0f);
     }
 
     public void GenerateWorld(WorldSettings settings)
@@ -60,11 +62,10 @@ public class World : MonoBehaviour
 
         totalChunks = renderDistance * renderDistance * 4;
 
-        StartCoroutine(WaitForWorldToGenerate());
+        //StartCoroutine(WaitForWorldToGenerate());
         if (generationMode == GenerationMode.Infinite)
         {
             StartCoroutine(RefreshActiveChunks());
-            //StartCoroutine(ChunkGeneration());
         }
     }
 
@@ -85,6 +86,20 @@ public class World : MonoBehaviour
         chunkDic[pos].name = "Chunk " + "(" + pos.x + "," + pos.y + ")";
         chunkDic[pos].GetComponent<Chunk>().SetupChunk(voxels);
         activeChunks.Add(chunkDic[pos]);
+
+        // Check for a valid location to spawn the player
+        if (!playerSpawned)
+        {
+            if (chunkDic[pos].GetComponent<Chunk>().FindSpawnSurface(out Vector3 spawnPosition)){
+                gameManager.SpawnPlayer(spawnPosition);
+                playerSpawned = true;
+            }
+            else if (activeChunks.Count > preloadSize * preloadSize)
+            {
+                gameManager.SpawnPlayer(new Vector3(0, 15, 0));
+                playerSpawned = true;
+            }
+        }
 
         return chunkDic[pos].GetComponent<Chunk>();
     }
@@ -323,6 +338,8 @@ public class World : MonoBehaviour
 
         nativeVoxels.Dispose();
         chunkPositions.Dispose();
+
+        TerrainChanged?.Invoke();
     }
 
     public void CheckObjects(Vector3 point, float radius)
@@ -418,14 +435,8 @@ public class World : MonoBehaviour
 
         nativeVoxels.Dispose();
         chunkPositions.Dispose();
-    }
 
-    public void PlacePart(Vector3 point, PartType type)
-    {
-        Vector2Int chunkPos = new Vector2Int(Mathf.FloorToInt(point.x / (chunkWidth - 1)), Mathf.FloorToInt(point.z / (chunkLength - 1)));
-        Chunk chunk = GetChunk(chunkPos);
-        Vector3 relativePoint = point - chunk.transform.position;
-        chunk.PlacePart(relativePoint, type);
+        TerrainChanged?.Invoke();
     }
 
     public void PaintTerrain(Vector3 point, float radius, Voxel.Material material)

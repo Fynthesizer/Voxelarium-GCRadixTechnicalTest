@@ -6,7 +6,6 @@
 		<PluginLib LibName="Wwise RoomVerb" LibId="7733251" Type="Effect" DLL="AkRoomVerb" StaticLib="AkRoomVerbFX"/>
 		<PluginLib LibName="System" LibId="11403271" Type="AudioDevice"/>
 		<PluginLib LibName="No Output" LibId="11862023" Type="AudioDevice"/>
-		<PluginLib LibName="Wwise Audio Input" LibId="13107202" Type="Source" DLL="AkAudioInput" StaticLib="AkAudioInputSource"/>
 	</PluginLibs>
-	<FileHash>{0D3D7B43-C45C-07DA-BDF2-360AF56FDE76}</FileHash>
+	<FileHash>{FD396326-0C0E-8A09-BB1B-28DE641753A3}</FileHash>
 </PluginInfo>
