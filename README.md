@@ -1,4 +1,4 @@
-# Voxelarium-GCRadixTest
+# Voxelarium — GCRadix Technical Test
 
 Voxelarium is a procedural world generator I created in 2022 using Unity. It uses a marching cubes algorithm to generate smooth terrain from voxel data. The player is able to explore and sculpt the world similarly to games like Minecraft.
 
